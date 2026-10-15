@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bql1rrrswwr0y"]
+
+[ext_resource type="PackedScene" uid="uid://bbnto4k0qufd7" path="res://parametres/drop_menu/drop_menu_parametres.tscn" id="1_uosn5"]
+[ext_resource type="Script" path="res://parametres/drop_menu/drop_menu_fenetre.gd" id="2_s8chm"]
+
+[node name="Drop_Menu_Parametres_Feunetre" instance=ExtResource("1_uosn5")]
+script = ExtResource("2_s8chm")
+
+[node name="HBoxContainer" parent="." index="0"]
+alignment = 1
+
+[node name="Label" parent="HBoxContainer" index="1"]
+text = "Mode d'affichage"

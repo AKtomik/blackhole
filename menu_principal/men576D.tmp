@@ -1,0 +1,207 @@
+[gd_scene load_steps=8 format=3 uid="uid://bmwgfrd8butry"]
+
+[ext_resource type="Script" path="res://menu_principal/menu_principal_affichage.gd" id="1_10mja"]
+[ext_resource type="Texture2D" uid="uid://dqfrqntx73do5" path="res://ressources/images/menu_jeu_button.svg" id="1_502q6"]
+[ext_resource type="Texture2D" uid="uid://d2coddkrmcpy5" path="res://ressources/images/cgj_base_menu.svg" id="2_16gd3"]
+[ext_resource type="Texture2D" uid="uid://kpss4kt07w8l" path="res://ressources/images/menu_jeu_button_survole.svg" id="2_b8slo"]
+[ext_resource type="Texture2D" uid="uid://c5q7bc5hpe6hd" path="res://ressources/images/menu_jeu_tiny_button.svg" id="3_o6osq"]
+[ext_resource type="Texture2D" uid="uid://1pxsc65es708" path="res://ressources/images/menu_jeu_tiny_button_survole.svg" id="4_egxbj"]
+[ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://parametres/menu_parametres.tscn" id="6_0lenm"]
+
+[node name="Menu_principal_affichage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_10mja")
+
+[node name="ImageFond" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_16gd3")
+
+[node name="Menu_principal" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu_principal"]
+layout_mode = 2
+theme_override_constants/separation = 93
+
+[node name="VSeparator" type="VSeparator" parent="Menu_principal/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = -200
+
+[node name="VBoxMainButton" type="VBoxContainer" parent="Menu_principal/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="HSeparator" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxMainButton"]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="play_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxMainButton"]
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 2
+texture_normal = ExtResource("1_502q6")
+texture_pressed = ExtResource("2_b8slo")
+texture_hover = ExtResource("2_b8slo")
+texture_disabled = ExtResource("2_b8slo")
+texture_focused = ExtResource("2_b8slo")
+stretch_mode = 0
+
+[node name="play_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxMainButton/play_button"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "Jouer"
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "fr_FR"
+
+[node name="load_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxMainButton"]
+layout_mode = 2
+texture_normal = ExtResource("1_502q6")
+texture_pressed = ExtResource("2_b8slo")
+texture_hover = ExtResource("2_b8slo")
+texture_focused = ExtResource("2_b8slo")
+stretch_mode = 0
+
+[node name="load_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxMainButton/load_button"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "Charger
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "fr_FR"
+
+[node name="quit_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxMainButton"]
+layout_mode = 2
+texture_normal = ExtResource("1_502q6")
+texture_pressed = ExtResource("2_b8slo")
+texture_hover = ExtResource("2_b8slo")
+texture_focused = ExtResource("2_b8slo")
+stretch_mode = 0
+
+[node name="quit_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxMainButton/quit_button"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 32
+text = "Quitter"
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "fr_FR"
+
+[node name="HSeparator2" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxMainButton"]
+modulate = Color(0, 0, 0, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator2" type="VSeparator" parent="Menu_principal/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxSideButton" type="VBoxContainer" parent="Menu_principal/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HSeparator" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxSideButton"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 355
+
+[node name="param_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxSideButton"]
+custom_minimum_size = Vector2(150, 128)
+layout_mode = 2
+texture_normal = ExtResource("3_o6osq")
+texture_pressed = ExtResource("4_egxbj")
+texture_hover = ExtResource("4_egxbj")
+texture_focused = ExtResource("4_egxbj")
+stretch_mode = 0
+
+[node name="param_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxSideButton/param_button"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_top = 27.0
+offset_right = 150.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 19
+text = "Paramètres"
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "fr_FR"
+
+[node name="credit_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxSideButton"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+texture_normal = ExtResource("3_o6osq")
+texture_pressed = ExtResource("4_egxbj")
+texture_hover = ExtResource("4_egxbj")
+texture_focused = ExtResource("4_egxbj")
+stretch_mode = 0
+
+[node name="credit_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxSideButton/credit_button"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_top = 28.0
+offset_right = 150.0
+offset_bottom = 92.0
+theme_override_font_sizes/font_size = 25
+text = "Crédits"
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "fr_FR"
+
+[node name="HSeparator2" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxSideButton"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VSeparator3" type="VSeparator" parent="Menu_principal/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Menu_parametres" parent="." instance=ExtResource("6_0lenm")]
+visible = false
+layout_mode = 1
+
+[node name="MusiqueFond" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/load_button" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxSideButton/param_button" to="." method="_on_param_button_pressed"]

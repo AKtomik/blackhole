@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://n5vmjs3xhmma"]
+
+[ext_resource type="Script" uid="uid://ce75ifabdg8i2" path="res://parametres/assign_menu/assigner_bouton.gd" id="1_jtqf2"]
+
+[node name="assigner_bouton" type="Control" unique_id=8714067 groups=["changer_touches"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jtqf2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1581422230]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.5
+offset_top = -26.5
+offset_right = 268.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1853382431]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ACTION"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer" unique_id=1114374847]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=584785483]
+custom_minimum_size = Vector2(150, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "BOUTON_ACTION"
+
+[connection signal="hidden" from="." to="." method="_on_hidden"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
