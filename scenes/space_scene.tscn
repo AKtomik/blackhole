@@ -33,3 +33,5 @@ position = Vector2(266, 73)
 
 [node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
 visible = false
+
+[connection signal="exit_parametres" from="Menu_parametres" to="." method="on_exit_parametres"]
