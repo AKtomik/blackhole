@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://n5vmjs3xhmma"]
 
-[ext_resource type="Script" uid="uid://ce75ifabdg8i2" path="res://parametres/assign_menu/assigner_bouton.gd" id="1_jtqf2"]
+[ext_resource type="Script" uid="uid://ce75ifabdg8i2" path="res://scenes/UI/menu_pause/assign_menu/assigner_bouton.gd" id="1_jtqf2"]
+
 
 [node name="assigner_bouton" type="Control" unique_id=8714067 groups=["changer_touches"]]
 layout_mode = 3

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d0ulsovtj84go"]
 
-[ext_resource type="PackedScene" uid="uid://dah5m6qsf1fdr" path="res://parametres/slide_menu/slide_menu_parametres.tscn" id="3_4tew8"]
-[ext_resource type="PackedScene" uid="uid://n5vmjs3xhmma" path="res://parametres/assign_menu/assigner_bouton.tscn" id="4_chw0c"]
+[ext_resource type="PackedScene" uid="uid://dah5m6qsf1fdr" path="res://scenes/UI/menu_pause/slide_menu/slide_menu_parametres.tscn" id="3_4tew8"]
+[ext_resource type="PackedScene" uid="uid://n5vmjs3xhmma" path="res://scenes/UI/menu_pause/assign_menu/assigner_bouton.tscn" id="4_chw0c"]
+
 
 [sub_resource type="GDScript" id="GDScript_nexub"]
 script/source = "extends Control

@@ -6,7 +6,7 @@ extends Control
 @onready var musique_fond = $MusiqueFond
 
 # Pré charge la scène
-var MainScene = preload("res://scenes/Scene_principale.tscn").instantiate()
+var MainScene = preload("res://scenes/space_scene.tscn").instantiate()
 
 ## Entrée : Rien |
 ## Sortie : Rien |
@@ -61,5 +61,4 @@ func _on_musique_fond_finished() -> void:
 func on_quitter () -> void :
 	musique_fond.playing = true
 	menu_principal.visible = true
-	MainScene = preload("res://scenes/Scene_principale.tscn").instantiate()
 	MainScene.Quitter.connect(on_quitter)

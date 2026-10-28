@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://di4chlep1t1or"]
 
-[ext_resource type="Script" uid="uid://cuh87pj83e77l" path="res://parametres/menu_parametres.gd" id="1_2rsun"]
-[ext_resource type="PackedScene" uid="uid://d0ulsovtj84go" path="res://parametres/tab_parametres.tscn" id="2_hg7gg"]
-[ext_resource type="Texture2D" uid="uid://8gnaloa0vljm" path="res://ressources/images/menu_jeu_tiny_button.svg" id="3_28efj"]
-[ext_resource type="Texture2D" uid="uid://dgkers5n24soj" path="res://ressources/images/menu_jeu_tiny_button_survole.svg" id="4_fo4ob"]
+[ext_resource type="Script" uid="uid://cuh87pj83e77l" path="res://scenes/UI/menu_pause/menu_parametres.gd" id="1_2rsun"]
+[ext_resource type="PackedScene" uid="uid://d0ulsovtj84go" path="res://scenes/UI/menu_pause/tab_parametres.tscn" id="2_hg7gg"]
+[ext_resource type="Texture2D" uid="uid://8gnaloa0vljm" path="res://assets/images/menu_jeu_tiny_button.svg" id="3_28efj"]
+[ext_resource type="Texture2D" uid="uid://dgkers5n24soj" path="res://assets/images/menu_jeu_tiny_button_survole.svg" id="4_fo4ob"]
+
 
 [node name="Menu_parametres" type="Control" unique_id=1037719077]
 layout_mode = 3
