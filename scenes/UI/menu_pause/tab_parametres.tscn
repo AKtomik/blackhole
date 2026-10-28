@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d0ulsovtj84go"]
 
+[ext_resource type="Script" uid="uid://cobeno4y5tm2r" path="res://scenes/UI/menu_pause/slide_menu/slide_menu_parametres.gd" id="2_c3amq"]
 [ext_resource type="PackedScene" uid="uid://dah5m6qsf1fdr" path="res://scenes/UI/menu_pause/slide_menu/slide_menu_parametres.tscn" id="3_4tew8"]
 [ext_resource type="PackedScene" uid="uid://n5vmjs3xhmma" path="res://scenes/UI/menu_pause/assign_menu/assigner_bouton.tscn" id="4_chw0c"]
-
 
 [sub_resource type="GDScript" id="GDScript_nexub"]
 script/source = "extends Control
@@ -83,13 +83,17 @@ vertical_alignment = 1
 [node name="slide_menu_parametres" parent="TabContainer/Son/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1757053152 instance=ExtResource("3_4tew8")]
 layout_mode = 2
 size_flags_vertical = 3
+script = ExtResource("2_c3amq")
+bus_name = "Master"
 
 [node name="slide_menu_parametres2" parent="TabContainer/Son/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1563524807 instance=ExtResource("3_4tew8")]
 layout_mode = 2
+script = ExtResource("2_c3amq")
 bus_name = "Music"
 
 [node name="slide_menu_parametres3" parent="TabContainer/Son/MarginContainer/ScrollContainer/VBoxContainer" unique_id=426629367 instance=ExtResource("3_4tew8")]
 layout_mode = 2
+script = ExtResource("2_c3amq")
 bus_name = "Sfx"
 
 [node name="Commandes" type="TabBar" parent="TabContainer" unique_id=1393309392]
