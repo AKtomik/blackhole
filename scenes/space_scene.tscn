@@ -5,9 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://ne8vljrbvf4w" path="res://scenes/elements/planets/planet.tscn" id="2_ma5ay"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="4_4c1q5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c1q5"]
-size = Vector2(1000, 500)
-
 [sub_resource type="Gradient" id="Gradient_m05qc"]
 offsets = PackedFloat32Array(0, 0.99657536)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -18,17 +15,20 @@ gradient = SubResource("Gradient_m05qc")
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
 
-[node name="BlackHole" type="Node2D" parent="." unique_id=909080606]
+[node name="BlackHole" type="Node2D" parent="." unique_id=909080606 node_paths=PackedStringArray("camera", "planets_parent")]
 script = ExtResource("1_rysn1")
 planets_scenes = Array[PackedScene]([ExtResource("2_ma5ay")])
-spawn_area = SubResource("RectangleShape2D_4c1q5")
+camera = NodePath("Camera2D")
+planets_parent = NodePath("../Planets")
 
 [node name="Sprite2D" type="Sprite2D" parent="BlackHole" unique_id=1785093878]
 texture = SubResource("GradientTexture2D_fcpha")
 
 [node name="Camera2D" type="Camera2D" parent="BlackHole" unique_id=2081882458]
 
-[node name="Planet" parent="." unique_id=378393114 instance=ExtResource("2_ma5ay")]
+[node name="Planets" type="Node2D" parent="." unique_id=1828714037]
+
+[node name="Planet" parent="Planets" unique_id=378393114 instance=ExtResource("2_ma5ay")]
 position = Vector2(266, 73)
 
 [node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
