@@ -21,3 +21,15 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
+
+## Entrée : Number un entier |
+## Sortie : Rien |
+## Action : Crée la constellation du niveau composé d'autant d'étoiles que données en entrée
+func create_constellation(number : int) -> void :
+	pass
+
+## Entrée : coo un vecteur d'entiers
+## Sortie : Rien |
+## Action : Fait apparaître une planète/étoile aux coordonnées données
+func spawn_planet(coo : Vector2) -> void :
+	pass
