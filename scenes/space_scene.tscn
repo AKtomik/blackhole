@@ -28,5 +28,12 @@ position = Vector2(266, 73)
 
 [node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
 visible = false
+propagate_maximum_size = true
+offset_left = -640.0
+offset_top = -363.0
+offset_right = 640.0
+offset_bottom = 360.0
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
+
+[connection signal="exit_parametres" from="Menu_parametres" to="." method="on_exit_parametres"]

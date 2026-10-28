@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cuh87pj83e77l" path="res://scenes/UI/menu_pause/menu_parametres.gd" id="1_q83rq"]
 
-
 [node name="slide_menu_parametres" type="Control" unique_id=165978337]
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_q83rq")
-bus_name = "Master"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=696411057]
 layout_mode = 1
