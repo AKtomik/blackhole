@@ -4,13 +4,7 @@
 [ext_resource type="Script" uid="uid://r3sj8xcg0s5" path="res://scenes/space_scene.gd" id="1_vu1g8"]
 [ext_resource type="PackedScene" uid="uid://ne8vljrbvf4w" path="res://scenes/elements/planets/planet.tscn" id="2_ma5ay"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="4_4c1q5"]
-
-[sub_resource type="Gradient" id="Gradient_m05qc"]
-offsets = PackedFloat32Array(0, 0.99657536)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcpha"]
-gradient = SubResource("Gradient_m05qc")
+[ext_resource type="Texture2D" uid="uid://cla1l1llx0yom" path="res://assets/images/chara/chara v1.png" id="4_jsx7o"]
 
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
@@ -22,7 +16,8 @@ camera = NodePath("Camera2D")
 planets_parent = NodePath("../Planets")
 
 [node name="Sprite2D" type="Sprite2D" parent="BlackHole" unique_id=1785093878]
-texture = SubResource("GradientTexture2D_fcpha")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_jsx7o")
 
 [node name="Camera2D" type="Camera2D" parent="BlackHole" unique_id=2081882458]
 
