@@ -3,21 +3,40 @@
 [ext_resource type="Script" uid="uid://b7mx5aydxd863" path="res://scripts/planet.gd" id="1_8ek2w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
+radius = 15.0
 
-[sub_resource type="Gradient" id="Gradient_dtwn4"]
+[sub_resource type="Gradient" id="Gradient_8ek2w"]
 offsets = PackedFloat32Array(0, 0.99657536)
 colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2olr"]
-gradient = SubResource("Gradient_dtwn4")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjsi5"]
+gradient = SubResource("Gradient_8ek2w")
 width = 16
 height = 16
 
-[node name="Planet" type="Area2D" unique_id=378393114]
+[sub_resource type="Gradient" id="Gradient_dtwn4"]
+offsets = PackedFloat32Array(0, 0.99657536)
+colors = PackedColorArray(0, 1, 1, 0.44705883, 0, 1, 1, 0.5176471)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2olr"]
+gradient = SubResource("Gradient_dtwn4")
+width = 24
+height = 24
+
+[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("draging_sprite")]
 script = ExtResource("1_8ek2w")
+draging_sprite = NodePath("SelectedSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
 shape = SubResource("CircleShape2D_4kxuq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2024272064]
+[node name="NormalSprite" type="Sprite2D" parent="." unique_id=2024272064]
+texture = SubResource("GradientTexture2D_mjsi5")
+
+[node name="SelectedSprite" type="Sprite2D" parent="." unique_id=2091914226]
+visible = false
 texture = SubResource("GradientTexture2D_x2olr")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

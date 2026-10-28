@@ -1,3 +1,4 @@
+class_name BlackHole
 extends Node2D
 
 @export var planets_amount : int = 30
