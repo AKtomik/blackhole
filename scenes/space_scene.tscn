@@ -33,3 +33,5 @@ position = Vector2(266, 73)
 
 [node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
 visible = false
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
