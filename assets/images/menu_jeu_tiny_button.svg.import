@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckj5oqxrc2bgd"
-path="res://.godot/imported/menu_jeu_button.svg-bb0678d9ee874906f85ba3730e798e02.ctex"
+uid="uid://8gnaloa0vljm"
+path="res://.godot/imported/menu_jeu_tiny_button.svg-ea181072079ae02bfc3a45beaa9a905c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/images/menu_jeu_button.svg"
-dest_files=["res://.godot/imported/menu_jeu_button.svg-bb0678d9ee874906f85ba3730e798e02.ctex"]
+source_file="res://assets/images/menu_jeu_tiny_button.svg"
+dest_files=["res://.godot/imported/menu_jeu_tiny_button.svg-ea181072079ae02bfc3a45beaa9a905c.ctex"]
 
 [params]
 

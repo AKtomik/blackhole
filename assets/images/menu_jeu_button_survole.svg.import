@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgkers5n24soj"
-path="res://.godot/imported/menu_jeu_tiny_button_survole.svg-b69353f9c2bd0ab4149b1e6dd5cf8a50.ctex"
+uid="uid://b4elxs7cenqeq"
+path="res://.godot/imported/menu_jeu_button_survole.svg-625a0dc571481d93c006edcf1d2b63af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ressources/images/menu_jeu_tiny_button_survole.svg"
-dest_files=["res://.godot/imported/menu_jeu_tiny_button_survole.svg-b69353f9c2bd0ab4149b1e6dd5cf8a50.ctex"]
+source_file="res://assets/images/menu_jeu_button_survole.svg"
+dest_files=["res://.godot/imported/menu_jeu_button_survole.svg-625a0dc571481d93c006edcf1d2b63af.ctex"]
 
 [params]
 
