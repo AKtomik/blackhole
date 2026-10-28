@@ -21,6 +21,8 @@ texture = ExtResource("4_jsx7o")
 
 [node name="Camera2D" type="Camera2D" parent="BlackHole" unique_id=2081882458]
 
+[node name="FmodListener2D" type="FmodListener2D" parent="BlackHole/Camera2D" unique_id=1822220154]
+
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
 
 [node name="Planet" parent="Planets" unique_id=378393114 instance=ExtResource("2_ma5ay")]
@@ -34,5 +36,10 @@ offset_right = 640.0
 offset_bottom = 360.0
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
+bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
+
+[node name="LoopTest" type="FmodEventEmitter2D" parent="." unique_id=350573087]
+event_name = "event:/Test"
+event_guid = "{48b88b12-3e51-4113-ab31-8e60befa2849}"
 
 [connection signal="exit_parametres" from="Menu_parametres" to="." method="on_exit_parametres"]
