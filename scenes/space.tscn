@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cu88ntxueulb2"]
+
+[ext_resource type="Script" uid="uid://bgdjpsxbr0t0x" path="res://scripts/black_hole.gd" id="1_rysn1"]
+[ext_resource type="Script" uid="uid://b7mx5aydxd863" path="res://scripts/planet.gd" id="2_c6rj5"]
+
+[sub_resource type="Gradient" id="Gradient_m05qc"]
+offsets = PackedFloat32Array(0, 0.99657536)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcpha"]
+gradient = SubResource("Gradient_m05qc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
+
+[sub_resource type="Gradient" id="Gradient_dtwn4"]
+offsets = PackedFloat32Array(0, 0.99657536)
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2olr"]
+gradient = SubResource("Gradient_dtwn4")
+width = 16
+height = 16
+
+[node name="Space" type="Node2D" unique_id=1970641133]
+
+[node name="BlackHole" type="Node2D" parent="." unique_id=909080606]
+script = ExtResource("1_rysn1")
+
+[node name="Sprite2D" type="Sprite2D" parent="BlackHole" unique_id=1785093878]
+texture = SubResource("GradientTexture2D_fcpha")
+
+[node name="Camera2D" type="Camera2D" parent="BlackHole" unique_id=2081882458]
+
+[node name="Planet" type="Area2D" parent="." unique_id=1149494672]
+position = Vector2(266, 73)
+script = ExtResource("2_c6rj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet" unique_id=1198115662]
+shape = SubResource("CircleShape2D_4kxuq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet" unique_id=911086645]
+texture = SubResource("GradientTexture2D_x2olr")

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://0285bufly8f1"]
+
+[ext_resource type="Script" uid="uid://r3sj8xcg0s5" path="res://scenes/main_scene.gd" id="1_pw63i"]
+[ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://parametres/menu_parametres.tscn" id="2_7ykc4"]
+
+[node name="Scene_Principale" type="Node2D" unique_id=1583667612]
+script = ExtResource("1_pw63i")
+
+[node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("2_7ykc4")]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[connection signal="exit_parametres" from="Menu_parametres" to="." method="on_exit_parametres"]
