@@ -18,6 +18,7 @@ func _ready() -> void:
 @export var camera : Camera2D
 @export var planets_parent : Node2D
 
+#region planets generation
 ## Entrée : Number un entier |
 ## Sortie : Rien |
 ## Action : Crée la constellation du niveau composé d'autant d'étoiles que données en entrée
@@ -61,6 +62,8 @@ func spawn_planet(coo : Vector2) -> void :
 	var planet_node : Node2D = planet_packed.instantiate()
 	planets_parent.add_child(planet_node)
 	planet_node.global_position = coo
+
+#endregion
 
 # CONSTELATION MANAGEMENT
 
