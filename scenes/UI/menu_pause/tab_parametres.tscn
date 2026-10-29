@@ -74,14 +74,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2_c3amq")
-bus_name = "Master"
+bus_name = "Master_Level"
 
 [node name="slide_menu_parametres2" parent="TabContainer/Son/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1563524807 instance=ExtResource("3_4tew8")]
 layout_mode = 2
 script = ExtResource("2_c3amq")
-bus_name = "Music"
+bus_name = "Music_Level"
 
 [node name="slide_menu_parametres3" parent="TabContainer/Son/MarginContainer/ScrollContainer/VBoxContainer" unique_id=426629367 instance=ExtResource("3_4tew8")]
 layout_mode = 2
 script = ExtResource("2_c3amq")
-bus_name = "Sfx"
+bus_name = "SFX_Level"

@@ -1,6 +1,8 @@
 class_name BlackHole
 extends Node2D
 
+@export var planet_textures : Array[Texture2D] = []
+
 # the amount of planets required to finish a constelation
 var constelation_required_planet_amount : int = 30
 # do finish constelation when required amount is hit
@@ -69,6 +71,18 @@ func spawn_planet(coo : Vector2, distance_max : float = constelation_maximal_pla
 	planets_parent.add_child(planet_node)
 	planet_node.global_position = coo
 	planet_node.line_max_range = distance_max
+	
+	var color_rect : ColorRect = planet_node.get_node("ColorRect") 
+	
+	if color_rect and color_rect.material:
+		var unique_mat : ShaderMaterial = color_rect.material.duplicate()
+		color_rect.material = unique_mat
+		
+		unique_mat.set_shader_parameter("rotation_speed", randf_range(0.05, 0.3))
+		
+		if not planet_textures.is_empty():
+			var random_tex = planet_textures.pick_random()
+			unique_mat.set_shader_parameter("planet_texture", random_tex)
 
 #endregion
 
@@ -127,8 +141,9 @@ func release_constelator():
 	else:
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
+		$SFX_Unselect_Star.play()
 	linking_planets = []
-	$SFX_Unselect_Star.play()
+	
 	
 
 #endregion

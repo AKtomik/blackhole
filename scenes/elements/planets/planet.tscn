@@ -1,47 +1,52 @@
 [gd_scene format=3 uid="uid://ne8vljrbvf4w"]
 
 [ext_resource type="Script" uid="uid://b7mx5aydxd863" path="res://scripts/planet.gd" id="1_8ek2w"]
-[ext_resource type="Texture2D" uid="uid://brgvtoa6p2b3m" path="res://assets/images/UI/planetes/planete (1).png" id="2_lpu1y"]
-[ext_resource type="Texture2D" uid="uid://c62j0mhbuqxfq" path="res://assets/images/UI/planetes/planete (2).png" id="3_t5wgm"]
-[ext_resource type="Texture2D" uid="uid://bai8ks5odcsdr" path="res://assets/images/UI/planetes/planete (3).png" id="4_n7oyo"]
-[ext_resource type="Texture2D" uid="uid://rsmo3vaboyx7" path="res://assets/images/UI/planetes/planete (4).png" id="5_r5i1o"]
-[ext_resource type="Texture2D" uid="uid://bxk1uswfvbak2" path="res://assets/images/UI/planetes/planete (5).png" id="6_11stl"]
-[ext_resource type="Texture2D" uid="uid://bqf2l0kimu17n" path="res://assets/images/UI/planetes/planete (6).png" id="7_lcts6"]
-[ext_resource type="Texture2D" uid="uid://d22gko76cbvfg" path="res://assets/images/UI/planetes/planete (7).png" id="8_7u4yc"]
-[ext_resource type="Texture2D" uid="uid://b8wk38xp8040m" path="res://assets/images/UI/planetes/planete (8).png" id="9_f766o"]
+[ext_resource type="Shader" uid="uid://bdnxxyuq7aefg" path="res://scenes/elements/planets/planet.gdshader" id="2_mjsi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
-radius = 21.17
+radius = 15.0
 
-[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("shape_node", "planet_sprite_node", "selected_sprite_node", "link_line_node", "link_ray_node")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kxuq"]
+shader = ExtResource("2_mjsi5")
+shader_parameter/rotation_speed = 0.1
+
+[sub_resource type="Gradient" id="Gradient_dtwn4"]
+offsets = PackedFloat32Array(0, 0.99657536)
+colors = PackedColorArray(0, 1, 1, 0.44705883, 0, 1, 1, 0.5176471)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2olr"]
+gradient = SubResource("Gradient_dtwn4")
+width = 24
+height = 24
+
+[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("draging_sprite", "link_line", "link_ray")]
 script = ExtResource("1_8ek2w")
-shape_node = NodePath("CollisionShape")
-planet_sprite_node = NodePath("NormalSprite")
-selected_sprite_node = NodePath("NormalSprite/SelectedSprite")
-sprite_textures = Array[Texture2D]([ExtResource("2_lpu1y"), ExtResource("3_t5wgm"), ExtResource("4_n7oyo"), ExtResource("5_r5i1o"), ExtResource("6_11stl"), ExtResource("7_lcts6"), ExtResource("8_7u4yc"), ExtResource("9_f766o")])
-link_line_node = NodePath("LinkLine")
-link_ray_node = NodePath("LinkRay")
+draging_sprite = NodePath("SelectedSprite")
+link_line = NodePath("LinkLine")
+link_ray = NodePath("LinkRay")
 
 [node name="LinkLine" type="Line2D" parent="." unique_id=1162823384]
-z_index = -1
 points = PackedVector2Array(0, 0, 30, 0)
 width = 5.0
 
-[node name="NormalSprite" type="Sprite2D" parent="." unique_id=2024272064]
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("2_lpu1y")
+[node name="LinkRay" type="RayCast2D" parent="." unique_id=1480183864]
+target_position = Vector2(30, 0)
 
-[node name="SelectedSprite" type="Sprite2D" parent="NormalSprite" unique_id=2091914226]
-visible = false
-self_modulate = Color(1, 0, 1, 0.8901961)
-texture = ExtResource("2_lpu1y")
-
-[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=216014902]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
 shape = SubResource("CircleShape2D_4kxuq")
 
-[node name="LinkRay" type="RayCast2D" parent="." unique_id=1480183864]
-exclude_parent = false
-target_position = Vector2(30, 0)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=757454432]
+material = SubResource("ShaderMaterial_4kxuq")
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SelectedSprite" type="Sprite2D" parent="." unique_id=2091914226]
+visible = false
+texture = SubResource("GradientTexture2D_x2olr")
+
+[node name="Shpere" type="Node2D" parent="." unique_id=53907553]
 
 [node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
 event_name = "event:/SFX_Select_Star"

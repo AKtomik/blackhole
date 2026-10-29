@@ -6,7 +6,7 @@ extends Control
 @onready var h_slider = $HBoxContainer/HSlider as HSlider
 
 # Permet de choisir quel bus ce slider va changer
-@export_enum("Master", "Music", "Sfx") var bus_name : String
+@export_enum("Master_Level", "Music_Level", "SFX_Level") var bus_name : String
 
 var bus_index : int = 0
 
@@ -23,11 +23,11 @@ func _ready():
 ## Action : CHange le label pour convenir au bus changé |
 func set_nom_audio () -> void : 
 	match bus_name:
-		"Master" :
+		"Master_Level" :
 			nom_audio.text = str("Général")
-		"Music" :
+		"Music_Level" :
 			nom_audio.text = str("Musique")
-		"Sfx" :
+		"SFX_Level" :
 			nom_audio.text = str("Effets Sonores")
 
 ## Entrée : Rien |
@@ -35,12 +35,14 @@ func set_nom_audio () -> void :
 ## Action : Change le text du label qui indique le volume |
 func set_valeur_audio () -> void : 
 	valeur_audio.text = str(h_slider.value * 100) + " %"
+	
 
 ## Entrée : Rien |
 ## Sortie : Rien |
 ## Action : Change le volume de l'audio dans le bus audio |
 func on_value_changed(value : float) -> void : 
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
+	FmodServer.set_global_parameter_by_name(bus_name, value*100	)
 	set_valeur_audio()
 
 ## Entrée : Rien |
