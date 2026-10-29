@@ -2,6 +2,7 @@ class_name Planet
 extends Area2D
 
 @export var shape_node : CollisionShape2D
+@export var visual_node : Node2D
 
 @export_group("Textures")
 @export var planet_sprite_node : Sprite2D
@@ -16,7 +17,7 @@ extends Area2D
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
 
-var initial_scale_planet_sprite
+var initial_scale_visual
 var initial_scale_shape
 
 func _ready() -> void:
@@ -25,7 +26,7 @@ func _ready() -> void:
 	var texture = sprite_textures.pick_random()
 	planet_sprite_node.texture = texture
 	selected_sprite_node.texture = texture
-	initial_scale_planet_sprite = planet_sprite_node.scale
+	initial_scale_visual = planet_sprite_node.scale
 	initial_scale_shape = shape_node.scale
 	planet_size = randf_range(.75, 2)
 
@@ -57,7 +58,7 @@ func line_to(to_global_pos: Vector2, skip_range_cap: bool = false):
 
 func change_planet_size(size: float):
 	_planet_size = size
-	planet_sprite_node.scale = Vector2(size, size) * initial_scale_planet_sprite
+	visual_node.scale = Vector2(size, size) * initial_scale_visual
 	shape_node.scale = Vector2(size, size) * initial_scale_shape
 
 

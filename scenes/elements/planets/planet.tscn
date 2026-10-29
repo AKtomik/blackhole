@@ -19,11 +19,8 @@ gradient = SubResource("Gradient_dtwn4")
 width = 24
 height = 24
 
-[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("draging_sprite", "link_line", "link_ray")]
+[node name="Planet" type="Area2D" unique_id=378393114]
 script = ExtResource("1_8ek2w")
-draging_sprite = NodePath("SelectedSprite")
-link_line = NodePath("LinkLine")
-link_ray = NodePath("LinkRay")
 
 [node name="LinkLine" type="Line2D" parent="." unique_id=1162823384]
 points = PackedVector2Array(0, 0, 30, 0)
@@ -32,21 +29,21 @@ width = 5.0
 [node name="LinkRay" type="RayCast2D" parent="." unique_id=1480183864]
 target_position = Vector2(30, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=216014902]
 shape = SubResource("CircleShape2D_4kxuq")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=757454432]
+[node name="PlanetVisual" type="Node2D" parent="." unique_id=53907553]
+
+[node name="PlanetAnimatedRectangle" type="ColorRect" parent="PlanetVisual" unique_id=757454432]
 material = SubResource("ShaderMaterial_4kxuq")
 offset_left = -16.0
 offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
 
-[node name="SelectedSprite" type="Sprite2D" parent="." unique_id=2091914226]
+[node name="SelectedCircleSprite" type="Sprite2D" parent="PlanetVisual" unique_id=2091914226]
 visible = false
 texture = SubResource("GradientTexture2D_x2olr")
-
-[node name="Shpere" type="Node2D" parent="." unique_id=53907553]
 
 [node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
 event_name = "event:/SFX_Select_Star"
