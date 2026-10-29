@@ -31,13 +31,6 @@ texture = ExtResource("4_jsx7o")
 [node name="Planet" parent="Planets" unique_id=378393114 instance=ExtResource("2_ma5ay")]
 position = Vector2(625, -345)
 
-[node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
-visible = false
-offset_left = -640.0
-offset_top = -363.0
-offset_right = 640.0
-offset_bottom = 360.0
-
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
 
@@ -59,4 +52,16 @@ size_flags_vertical = 4
 texture = ExtResource("7_mxyie")
 stretch_mode = 5
 
-[connection signal="exit_parametres" from="Menu_parametres" to="." method="on_exit_parametres"]
+[node name="Menu_parametres" parent="CanvasLayer" unique_id=1037719077 instance=ExtResource("4_4c1q5")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -361.5
+offset_right = 640.0
+offset_bottom = 361.5
+
+[connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]
