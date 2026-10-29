@@ -4,13 +4,11 @@ extends Area2D
 @export var shape_node : CollisionShape2D
 @export var visual_node : Node2D
 
-@export_group("Textures")
-@export var planet_sprite_node : Sprite2D
+@export var planet_rectangle_node : ColorRect
 @export var selected_sprite_node : Sprite2D
 
-@export var sprite_textures : Array[Texture2D]
+@export var planet_textures : Array[Texture2D]
 
-@export_group("Links")
 @export var link_line_node : Line2D
 @export var link_ray_node : RayCast2D
 
@@ -23,12 +21,16 @@ var initial_scale_shape
 func _ready() -> void:
 	selected_sprite_node.visible = false
 	link_line_node.visible = false
-	var texture = sprite_textures.pick_random()
-	planet_sprite_node.texture = texture
-	selected_sprite_node.texture = texture
-	initial_scale_visual = planet_sprite_node.scale
+	var texture = planet_textures.pick_random()
+	
+	var unique_mat : ShaderMaterial = planet_rectangle_node.material.duplicate()
+	unique_mat.set_shader_parameter("rotation_speed", randf_range(0.05, 0.3))
+	unique_mat.set_shader_parameter("planet_texture", texture)
+	planet_rectangle_node.material = unique_mat
+
+	initial_scale_visual = visual_node.scale
 	initial_scale_shape = shape_node.scale
-	planet_size = randf_range(.75, 2)
+	change_planet_size(_planet_size)
 
 func _process(_delta: float) -> void:
 	if (is_last):
@@ -43,7 +45,7 @@ func _process(_delta: float) -> void:
 # GRAPHISM
 
 var line_max_range: float
-var _planet_size: float
+var _planet_size: float = 1
 var planet_size:
 	get: return _planet_size
 	set(value): change_planet_size(value)
@@ -58,6 +60,7 @@ func line_to(to_global_pos: Vector2, skip_range_cap: bool = false):
 
 func change_planet_size(size: float):
 	_planet_size = size
+	if !(is_node_ready()): return
 	visual_node.scale = Vector2(size, size) * initial_scale_visual
 	shape_node.scale = Vector2(size, size) * initial_scale_shape
 

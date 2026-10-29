@@ -9,8 +9,9 @@
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
 
-[node name="BlackHole" parent="." unique_id=1995767824 instance=ExtResource("2_jsx7o")]
+[node name="BlackHole" parent="." unique_id=1995767824 node_paths=PackedStringArray("planets_parent") instance=ExtResource("2_jsx7o")]
 unique_name_in_owner = true
+planets_parent = NodePath("../Planets")
 
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
 
