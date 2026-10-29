@@ -82,7 +82,7 @@ func spawn_planet(coo : Vector2, distance_max : float = constelation_maximal_pla
 	planets_parent.add_child(planet_node)
 	planet_node.global_position = coo
 	planet_node.line_max_range = distance_max
-	planet_node.planet_size = (distance_max**2 / planet_scale**2) + 0.6
+	planet_node.planet_size = (distance_max / planet_scale) + 0.6
 
 #endregion
 
