@@ -4,7 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dd65b6ik5uaoi" path="res://scenes/elements/black_hole.tscn" id="2_jsx7o"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="4_4c1q5"]
 [ext_resource type="Material" uid="uid://rx8wbuy4rxvs" path="res://assets/Shaders/shockwave_bubble_shader.tres" id="6_6scvu"]
+[ext_resource type="Texture2D" uid="uid://ckj5oqxrc2bgd" path="res://assets/images/menu_jeu_button.svg" id="7_fwyvl"]
 [ext_resource type="Texture2D" uid="uid://dxw2mr6g26kyb" path="res://assets/images/UI/bulle black hole.png" id="7_mxyie"]
+[ext_resource type="Texture2D" uid="uid://b4elxs7cenqeq" path="res://assets/images/menu_jeu_button_survole.svg" id="8_i2e4q"]
+[ext_resource type="FontFile" uid="uid://c2mb6de2hcgpy" path="res://assets/fonts/OpenDyslexic-Regular.otf" id="9_ntytb"]
+[ext_resource type="Texture2D" uid="uid://e6lw0xhnshui" path="res://assets/images/UI/planetes/sprite_tileable/tile_08.png" id="10_1dowx"]
 
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
@@ -15,7 +19,7 @@ planets_parent = NodePath("../Planets")
 planet_scale = 300.0
 
 [node name="SFX_Confirm_Alignment" type="FmodEventEmitter2D" parent="BlackHole" unique_id=1160868284]
-event_name = "event:/SFX_Confirm_Alignment"
+event_name = "event:/Confirm_Alignment"
 event_guid = "{8e4152ff-be09-471b-99ae-491a7394fddc}"
 fmod_parameters/NumSelectedStars/id = -5901918704000455688
 fmod_parameters/NumSelectedStars = 1
@@ -29,7 +33,7 @@ bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Mast
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444755364]
 layer = 4
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1383605581]
+[node name="Fond_trou_noir" type="TextureRect" parent="CanvasLayer" unique_id=1383605581]
 material = ExtResource("6_6scvu")
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,5 +57,61 @@ offset_top = -361.5
 offset_right = 640.0
 offset_bottom = 361.5
 
+[node name="Game_over" type="TextureRect" parent="CanvasLayer" unique_id=717811820]
+visible = false
+material = ExtResource("6_6scvu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -119.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_1dowx")
+stretch_mode = 5
+
+[node name="Button" type="TextureButton" parent="CanvasLayer/Game_over" unique_id=878393311]
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.5
+offset_top = -84.999985
+offset_right = 152.5
+offset_bottom = 84.999985
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_fwyvl")
+texture_pressed = ExtResource("8_i2e4q")
+texture_hover = ExtResource("8_i2e4q")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/Game_over/Button" unique_id=418126545]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_ntytb")
+theme_override_font_sizes/font_size = 32
+text = "Continuer"
+horizontal_alignment = 1
+vertical_alignment = 1
+language = "fr_FR"
+
 [connection signal="timeout" from="BlackHole" to="." method="_on_black_hole_timeout"]
 [connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]
+[connection signal="pressed" from="CanvasLayer/Game_over/Button" to="." method="_on_button_pressed"]

@@ -19,7 +19,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="TemplateGodot"
-run/main_scene="uid://cu88ntxueulb2"
+run/main_scene="uid://bmwgfrd8butry"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]

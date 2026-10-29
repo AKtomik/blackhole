@@ -3,6 +3,7 @@ extends Node2D
 #Prépare l'accès aux objets dans la scène dont on a besoin
 @onready var menu_parametres = $CanvasLayer/Menu_parametres
 @onready var planets = $Planets
+@onready var game_over = $CanvasLayer/Game_over
 
 # Signal à envoyer quand on veut quitter la scène
 signal Quitter()
@@ -45,4 +46,9 @@ func on_exit_parametres() -> void :
 
 
 func _on_black_hole_timeout() -> void:
-	pass
+	game_over.visible = true
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/UI/menu_principal/menu_principal.tscn")
+	self.queue_free()
