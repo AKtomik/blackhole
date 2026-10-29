@@ -40,7 +40,7 @@ var is_clickable : bool = true
 var is_selected : bool = false
 var is_last : bool = false
 
-func join_constelation():
+func join_constelation(planet_number: int):
 	is_selected = true
 	is_last = true
 	is_clickable = false
