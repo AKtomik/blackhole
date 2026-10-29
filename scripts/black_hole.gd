@@ -26,9 +26,9 @@ func _ready() -> void:
 ## Action : Crée la constellation du niveau composé d'autant d'étoiles que données en entrée
 func create_constellation(number : int) -> void :
 	var coordinates = create_coordinates(number)
-	for i in coordinates:
+	for i in range(coordinates.size()):
 		print("spawn planet ", i)
-		spawn_planet(i)
+		spawn_planet(coordinates[i], max(coordinates[i].distance_to(coordinates[i-1]), coordinates[i].distance_to(coordinates[(i+1)%coordinates.size()])))
 	planets_ready()# usefull for link clicks
 
 ## Entrée : amount un entier (int) |
@@ -44,21 +44,24 @@ func create_coordinates(amount : int) -> Array[Vector2] :
 	for i in range(amount):
 		var x = cos(current_degree)*randf_range(blackhole_offset, 625)
 		var y = sin(current_degree)*randf_range(blackhole_offset, 345)
-		#sqrt only returns positive values, we want y to be negative when drawing the bottom of the circle (0 - 180 degrees)
 		var rand_pos = Vector2(x, y)
-		current_degree += degree_step
+		for other_planet in result :
+			if rand_pos.distance_to(other_planet) < 50 :
+				print("TROP COURT")
 		
+		current_degree += degree_step
 		result.append(rand_pos)
 	return result
 
-## Entrée : coo un vecteur
+## Entrée : coo un vecteur, distance max un nombre flottant
 ## Sortie : Rien |
-## Action : Fait apparaître une planète/étoile aux coordonnées données
-func spawn_planet(coo : Vector2) -> void :
+## Action : Fait apparaître une planète/étoile aux coordonnées données et avec une distance de lien maximum donnée
+func spawn_planet(coo : Vector2, distance_max : float = constelation_maximal_planet_distance) -> void :
 	var planet_packed : PackedScene = planets_scenes.pick_random()
-	var planet_node : Node2D = planet_packed.instantiate()
+	var planet_node : Planet = planet_packed.instantiate()
 	planets_parent.add_child(planet_node)
 	planet_node.global_position = coo
+	planet_node.line_max_range = distance_max
 
 #endregion
 
