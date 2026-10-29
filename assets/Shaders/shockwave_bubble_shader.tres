@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://rx8wbuy4rxvs"]
+
+[ext_resource type="Shader" uid="uid://bdbu1y4owfjc0" path="res://scenes/elements/Bubble/space_scene.gdshader" id="1_ott1m"]
+
+[resource]
+shader = ExtResource("1_ott1m")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = -0.13
