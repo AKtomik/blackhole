@@ -41,6 +41,8 @@ func create_constellation() -> void :
 	if planets_amount > 2 :
 		timer.start(20)
 	planets_amount = planets_amount * 3/2
+	if planets_amount > 30 :
+		planets_amount = 30
 	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
@@ -60,7 +62,6 @@ func create_coordinates(amount : float) -> Array[Vector2] :
 	var blackhole_offset = 300
 	
 	for i in range(amount):
-		print("degré : ", current_degree, ", cos : ", cos(current_degree), ", sin :", sin(current_degree))
 		var x = cos(deg_to_rad(randf_range(current_degree-degree_step/2, current_degree+degree_step/2)))*randf_range(blackhole_offset, 625)
 		var y = sin(deg_to_rad(randf_range(current_degree-degree_step/2, current_degree+degree_step/2)))*randf_range(blackhole_offset, 345)
 		var rand_pos = Vector2(x, y)
@@ -154,5 +155,5 @@ func release_constelator():
 
 func _on_timer_timeout() -> void:
 	game_over = true
-	print("Temps écoulé")
+	print("Temps écoulé au niveau : ", current_level)
 	timeout.emit()
