@@ -126,6 +126,7 @@ func release_constelator():
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
 		create_constellation()
+		$SFX_Confirm_Alignment.play()
 	else:
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
