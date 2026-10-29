@@ -37,7 +37,7 @@ func create_coordinates(amount : int) -> Array[Vector2] :
 	var rect : Rect2 = camera.get_viewport_rect()
 	var current_degree = 0
 	var degree_step = 360/amount
-	var blackhole_offset = 250
+	var blackhole_offset = 300
 	
 	for i in range(amount):
 		#var rand_pos = Vector2(
@@ -45,10 +45,12 @@ func create_coordinates(amount : int) -> Array[Vector2] :
 		#	randf_range(rect.position.y, rect.position.x+rect.size.y) - rect.size.y/2
 		#)
 		var x = cos(current_degree)*blackhole_offset
-		var y = sqrt(blackhole_offset*blackhole_offset + x*x)
+		#var y = sqrt(blackhole_offset*blackhole_offset + x*x)
+		var y = sin(current_degree)*blackhole_offset
+		#sqrt only returns positive values, we want y to be negative when drawing the bottom of the circle (0 - 180 degrees)
 		if current_degree < 180 :
 			y = -y
-		var rand_pos = Vector2(y, x)
+		var rand_pos = Vector2(x, y)
 		current_degree += degree_step
 		
 		result.append(rand_pos)
