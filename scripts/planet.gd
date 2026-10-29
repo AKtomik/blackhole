@@ -3,6 +3,7 @@ extends Area2D
 
 @export var draging_sprite : Sprite2D
 @export var link_line : Line2D
+@export var link_ray : RayCast2D
 
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
@@ -12,18 +13,25 @@ func _ready() -> void:
 	link_line.visible = false 
 
 func _process(_delta: float) -> void:
-	if (is_last): line_to(get_global_mouse_position())
+	if (is_last):
+		line_to(get_global_mouse_position())
+		if (link_ray.enabled && link_ray.is_colliding()):
+			var collider = link_ray.get_collider()
+			print("colliding with ", collider)
+			if (collider is Planet):
+				print("collider is a planet!")
+				collider.planet_hovered(collider)
 
 # GRAPHISM
 
-var line_max_range 
+var line_max_range: float
 
-func line_to(global_to_pos: Vector2, skip_range_cap: bool = false):
-	var local_to_pos = global_to_pos - position
-	if (!skip_range_cap && position.distance_to(global_to_pos) > line_max_range):
-		local_to_pos = local_to_pos.normalized() * line_max_range
-	print("set_point_position(1, ", local_to_pos, ")")
-	link_line.set_point_position(1, local_to_pos)
+func line_to(to_global_pos: Vector2, skip_range_cap: bool = false):
+	var to_local_pos = to_global_pos - position
+	if (!skip_range_cap && position.distance_to(to_global_pos) > line_max_range):
+		to_local_pos = to_local_pos.normalized() * line_max_range
+	link_line.set_point_position(1, to_local_pos)
+	if (link_ray.enabled): link_ray.target_position = to_local_pos
 
 
 # STATES
@@ -32,13 +40,14 @@ var is_clickable : bool = true
 var is_selected : bool = false
 var is_last : bool = false
 
-func join_constelation(join_range: float):
+func join_constelation(planet_number: int):
 	is_selected = true
 	is_last = true
 	is_clickable = false
 	draging_sprite.visible = true
 	link_line.visible = true
-	line_max_range = join_range
+	link_ray.enabled = true
+	line_to(position)
 
 func constelation_link(next_planet: Planet):
 	is_last = false
@@ -50,6 +59,7 @@ func cancel_constelation():
 	is_clickable = true
 	draging_sprite.visible = false
 	link_line.visible = false
+	link_ray.enabled = false
 
 func finish_constelation():
 	queue_free()

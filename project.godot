@@ -84,6 +84,14 @@ right_click={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="default"
+2d_physics/layer_2="planet"
+2d_physics/layer_3="black hole"
+2d_physics/layer_4="wall"
+2d_physics/layer_5="link"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
