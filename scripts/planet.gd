@@ -22,7 +22,7 @@ func cancel_constelation():
 	draging_sprite.visible = false
 
 func finish_constelation():
-	free()
+	queue_free()
 
 # INPUTS
 
