@@ -19,7 +19,7 @@ func _ready() -> void:
 
 # GENERATION
 
-@export var planets_amount : int = 30
+@export var planets_amount : int = 2
 @export var min_planet_spacing = 50
 @export var planets_scenes : Array[PackedScene] = []
 @export var camera : Camera2D
@@ -31,6 +31,7 @@ func _ready() -> void:
 ## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
 func create_constellation() -> void :
 	planets_amount = planets_amount * 2
+	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
 		print("spawn planet ", i)
@@ -122,6 +123,7 @@ func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
+		create_constellation()
 	else:
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
