@@ -4,7 +4,7 @@ extends Node2D
 # the amount of planets required to finish a constelation
 var constelation_required_planet_amount : int = 5
 # the max distance between to planets to link both
-var constelation_maximal_planet_distance : float = 3
+var constelation_maximal_planet_distance : float = 100
 
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
@@ -97,6 +97,9 @@ func join_constelator(planet: Planet):
 	if (!is_linking()):
 		print_debug("trying to join a constelation but not making one!")
 		return
+	var last_planet = linking_planets[linking_planets.size() - 1]
+	var planet_distance = planet.position.distance_to(last_planet.position)
+	if (planet_distance > constelation_maximal_planet_distance): return
 	linking_planets.append(planet)
 	planet.join_constelation()
 	
