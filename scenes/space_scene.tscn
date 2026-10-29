@@ -10,6 +10,7 @@
 script = ExtResource("1_vu1g8")
 
 [node name="BlackHole" type="Node2D" parent="." unique_id=909080606 node_paths=PackedStringArray("camera", "planets_parent")]
+unique_name_in_owner = true
 script = ExtResource("1_rysn1")
 planets_scenes = Array[PackedScene]([ExtResource("2_ma5ay")])
 camera = NodePath("Camera2D")
