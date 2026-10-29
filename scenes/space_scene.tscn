@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://ne8vljrbvf4w" path="res://scenes/elements/planets/planet.tscn" id="2_ma5ay"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="4_4c1q5"]
 [ext_resource type="Texture2D" uid="uid://cla1l1llx0yom" path="res://assets/images/chara/chara v1.png" id="4_jsx7o"]
+[ext_resource type="Material" uid="uid://rx8wbuy4rxvs" path="res://assets/Shaders/shockwave_bubble_shader.tres" id="6_6scvu"]
+[ext_resource type="Texture2D" uid="uid://dxw2mr6g26kyb" path="res://assets/images/UI/bulle black hole.png" id="7_mxyie"]
 
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
@@ -27,14 +29,7 @@ texture = ExtResource("4_jsx7o")
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
 
 [node name="Planet" parent="Planets" unique_id=378393114 instance=ExtResource("2_ma5ay")]
-position = Vector2(266, 73)
-
-[node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
-visible = false
-offset_left = -640.0
-offset_top = -363.0
-offset_right = 640.0
-offset_bottom = 360.0
+position = Vector2(625, -345)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
@@ -43,4 +38,30 @@ bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Mast
 event_name = "event:/Test"
 event_guid = "{48b88b12-3e51-4113-ab31-8e60befa2849}"
 
-[connection signal="exit_parametres" from="Menu_parametres" to="." method="on_exit_parametres"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444755364]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1383605581]
+material = ExtResource("6_6scvu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_mxyie")
+stretch_mode = 5
+
+[node name="Menu_parametres" parent="CanvasLayer" unique_id=1037719077 instance=ExtResource("4_4c1q5")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -361.5
+offset_right = 640.0
+offset_bottom = 361.5
+
+[connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]

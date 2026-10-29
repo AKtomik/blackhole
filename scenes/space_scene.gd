@@ -1,7 +1,7 @@
 extends Node2D
 
 #Prépare l'accès aux objets dans la scène dont on a besoin
-@onready var menu_parametres = $Menu_parametres
+@onready var menu_parametres = $CanvasLayer/Menu_parametres
 
 # Signal à envoyer quand on veut quitter la scène
 signal Quitter()
