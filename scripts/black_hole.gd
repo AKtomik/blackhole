@@ -1,12 +1,14 @@
 class_name BlackHole
 extends Node2D
 
-# the amount of planets required to finisha constelation
+# the amount of planets required to finish a constelation
 var constelation_required_planet_amount : int = 5
-var constelation_maximal_planet_distance : float = 3
+# the max distance between to planets to link both
+var constelation_maximal_planet_distance : float = 100
 
 func _process(delta: float) -> void:
-	constelation_release_check()
+	if (is_linking() && Input.is_action_just_released("left_click")):
+		release_constelator()
 
 func _ready() -> void:
 	create_constellation(planets_amount)
@@ -67,42 +69,49 @@ func spawn_planet(coo : Vector2) -> void :
 
 #endregion
 
-# CONSTELATION MANAGEMENT
+#region constelation link click
+
+# LINK CLICK
 
 func planets_ready() -> void:
 	for child in planets_parent.get_children():
 		if child is Planet:
-			child.planet_clicked.connect(start_constelation)
-			child.planet_hovered.connect(join_constelation)
+			child.planet_clicked.connect(start_constelator)
+			child.planet_hovered.connect(join_constelator)
 
-func constelation_release_check() -> void:
-	if (is_linking() && Input.is_action_just_released("left_click")):
-		release_constelation()
-
-# STATES
+# LINK STATE
 
 var linking_planets : Array[Planet] = []
 
 func is_linking() -> bool:
 	return !linking_planets.is_empty()
 
+
 # start a constelation with this star
-func start_constelation(planet: Planet):
+func start_constelator(planet: Planet):
 	if (is_linking()):
 		print_debug("trying to start a constelation but making already one!")
 		return
 	linking_planets = [planet]
-	planet.join_constelation()
+	planet.join_constelation(constelation_maximal_planet_distance)
+
 
 # join the current constelation in build
-func join_constelation(planet: Planet):
+func join_constelator(planet: Planet):
 	if (!is_linking()):
 		print_debug("trying to join a constelation but not making one!")
 		return
-	linking_planets = [planet]
-	planet.join_constelation()
 	
-func release_constelation():
+	var last_planet = linking_planets[linking_planets.size() - 1]
+	var planet_distance = planet.position.distance_to(last_planet.position)
+	if (planet_distance > constelation_maximal_planet_distance): return
+	
+	last_planet.constelation_link(planet)
+	linking_planets.append(planet)
+	planet.join_constelation(constelation_maximal_planet_distance)
+
+	
+func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
@@ -110,3 +119,5 @@ func release_constelation():
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
 	linking_planets = []
+
+#endregion
