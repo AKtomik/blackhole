@@ -42,8 +42,8 @@ func create_coordinates(amount : int) -> Array[Vector2] :
 	var blackhole_offset = 300
 	
 	for i in range(amount):
-		var x = cos(current_degree)*blackhole_offset
-		var y = sin(current_degree)*blackhole_offset
+		var x = cos(current_degree)*randf_range(blackhole_offset, 625)
+		var y = sin(current_degree)*randf_range(blackhole_offset, 345)
 		#sqrt only returns positive values, we want y to be negative when drawing the bottom of the circle (0 - 180 degrees)
 		if current_degree < 180 :
 			y = -y
