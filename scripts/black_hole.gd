@@ -49,8 +49,9 @@ func create_coordinates(amount : float) -> Array[Vector2] :
 	var blackhole_offset = 300
 	
 	for i in range(amount):
-		var x = cos(current_degree)*randf_range(blackhole_offset, 625)
-		var y = sin(current_degree)*randf_range(blackhole_offset, 345)
+		print("degré : ", current_degree, ", cos : ", cos(current_degree), ", sin :", sin(current_degree))
+		var x = cos(deg_to_rad(randf_range(current_degree-degree_step/2, current_degree+degree_step/2)))*randf_range(blackhole_offset, 625)
+		var y = sin(deg_to_rad(randf_range(current_degree-degree_step/2, current_degree+degree_step/2)))*randf_range(blackhole_offset, 345)
 		var rand_pos = Vector2(x, y)
 		for other_planet in result :
 			if rand_pos.distance_to(other_planet) < min_planet_spacing :
