@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 		release_constelator()
 
 func _ready() -> void:
-	create_constellation(planets_amount)
+	create_constellation()
 
 # GENERATION
 
@@ -22,11 +22,12 @@ func _ready() -> void:
 @export var planets_parent : Node2D
 
 #region planets generation
-## Entrée : Number un entier |
+## Entrée : Rien |
 ## Sortie : Rien |
-## Action : Crée la constellation du niveau composé d'autant d'étoiles que données en entrée
-func create_constellation(number : int) -> void :
-	var coordinates = create_coordinates(number)
+## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
+func create_constellation() -> void :
+	planets_amount = planets_amount * 2
+	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
 		print("spawn planet ", i)
 		spawn_planet(coordinates[i], max(coordinates[i].distance_to(coordinates[i-1]), coordinates[i].distance_to(coordinates[(i+1)%coordinates.size()])))
