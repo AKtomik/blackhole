@@ -30,6 +30,12 @@ func _ready() -> void:
 
 # CONSTELATION MANAGEMENT
 
+func planets_ready() -> void:
+	for child in planets_parent.get_children():
+		if child is Planet:
+			child.planet_clicked.connect(start_constelation)
+			child.planet_hovered.connect(join_constelation)
+
 func constelation_release_check() -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
 		release_constelation()
