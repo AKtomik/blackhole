@@ -14,7 +14,7 @@ unique_name_in_owner = true
 planets_parent = NodePath("../Planets")
 
 [node name="SFX_Confirm_Alignment" type="FmodEventEmitter2D" parent="BlackHole" unique_id=1160868284]
-event_name = "event:/SFX_Confirm_Alignment"
+event_name = "event:/Confirm_Alignment"
 event_guid = "{8e4152ff-be09-471b-99ae-491a7394fddc}"
 fmod_parameters/NumSelectedStars/id = -5901918704000455688
 fmod_parameters/NumSelectedStars = 1

@@ -36,3 +36,5 @@ fmod_parameters/EndGame = 0
 fmod_parameters/EndGame/variant_type = 2
 
 [node name="FmodListener2D" type="FmodListener2D" parent="CameraPhysic/Camera2D" unique_id=1795883483]
+
+[node name="Timer" type="Timer" parent="." unique_id=1250517765]

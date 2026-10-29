@@ -10,6 +10,8 @@ var constelation_required_all : bool = true
 # the default max distance between to planets to link both
 var constelation_maximal_planet_distance : float = 100
 
+@onready var timer = $Timer
+
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
 		release_constelator()
