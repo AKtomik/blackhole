@@ -42,6 +42,8 @@ texture = SubResource("GradientTexture2D_mjsi5")
 visible = false
 texture = SubResource("GradientTexture2D_x2olr")
 
+[node name="Shpere" type="Node2D" parent="." unique_id=53907553]
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
