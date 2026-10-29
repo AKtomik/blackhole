@@ -12,6 +12,8 @@ var constelation_maximal_planet_distance : float = 100
 
 var current_level : int = 0
 
+var game_over = false
+
 @onready var timer = $Timer
 signal timeout
 
@@ -35,7 +37,7 @@ func _ready() -> void:
 ## Sortie : Rien |
 ## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
 func create_constellation() -> void :
-	if planets_amount != 2 :
+	if planets_amount > 2 :
 		timer.start(20)
 	planets_amount = planets_amount * 3/2
 	constelation_required_planet_amount = planets_amount
@@ -104,6 +106,9 @@ func is_linking() -> bool:
 
 # start a constelation with this star
 func start_constelator(planet: Planet):
+	if game_over :
+		print_debug("trying to start a constelation but there is no time left!")
+		return
 	if (is_linking()):
 		print_debug("trying to start a constelation but making already one!")
 		return
@@ -147,5 +152,6 @@ func release_constelator():
 
 
 func _on_timer_timeout() -> void:
+	game_over = true
 	print("Temps écoulé")
 	timeout.emit()
