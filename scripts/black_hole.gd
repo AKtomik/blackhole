@@ -10,6 +10,8 @@ var constelation_required_all : bool = true
 # the default max distance between to planets to link both
 var constelation_maximal_planet_distance : float = 100
 
+var current_level : int = 0
+
 @onready var timer = $Timer
 signal timeout
 
@@ -42,6 +44,7 @@ func create_constellation() -> void :
 		print("spawn planet ", i)
 		spawn_planet(coordinates[i], max(coordinates[i].distance_to(coordinates[i-1]), coordinates[i].distance_to(coordinates[(i+1)%coordinates.size()])))
 	connect_planets()# usefull for link clicks
+	current_level += 1
 
 ## Entrée : amount un nombre flottant (float) |
 ## Sortie : result un une liste de vecteurs (Array[Vector2]) |
