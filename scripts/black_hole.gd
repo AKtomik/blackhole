@@ -2,7 +2,7 @@ class_name BlackHole
 extends Node2D
 
 # the amount of planets required to finish a constelation
-var constelation_required_planet_amount : int = 5
+var constelation_required_planet_amount : int = 30
 # the default max distance between to planets to link both
 var constelation_maximal_planet_distance : float = 100
 
