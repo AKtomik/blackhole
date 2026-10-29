@@ -116,5 +116,6 @@ func release_constelator():
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
 	linking_planets = []
+	
 
 #endregion

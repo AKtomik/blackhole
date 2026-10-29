@@ -51,9 +51,6 @@ texture = SubResource("GradientTexture2D_x2olr")
 [node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
 event_name = "event:/SFX_Select_Star"
 event_guid = "{6b36fdec-bcbf-4397-83c5-22afe263b43b}"
-fmod_parameters/NumSelectedStars/id = -5901918704000455688
-fmod_parameters/NumSelectedStars = 1
-fmod_parameters/NumSelectedStars/variant_type = 2
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=535897319]
 event_name = "event:/SFX_Unselect_Star"

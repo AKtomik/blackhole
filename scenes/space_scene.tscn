@@ -18,6 +18,9 @@ planets_scenes = Array[PackedScene]([ExtResource("2_ma5ay")])
 camera = NodePath("Camera2D")
 planets_parent = NodePath("../Planets")
 
+[node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="BlackHole" unique_id=1819844149]
+event_guid = "{00000041-004d-0000-2f00-000000000000}"
+
 [node name="Sprite2D" type="Sprite2D" parent="BlackHole" unique_id=1785093878]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_jsx7o")
@@ -27,6 +30,7 @@ texture = ExtResource("4_jsx7o")
 [node name="MUSIC" type="FmodEventEmitter2D" parent="BlackHole/Camera2D" unique_id=350573087]
 event_name = "event:/MUSIC"
 event_guid = "{6add997a-5166-47ea-a859-7ad7e5be7b8a}"
+autoplay = true
 fmod_parameters/Blackhole_Size/id = -8254653874567266056
 fmod_parameters/Blackhole_Size = 0.0
 fmod_parameters/Blackhole_Size/variant_type = 3
