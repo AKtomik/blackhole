@@ -23,9 +23,14 @@ gradient = SubResource("Gradient_dtwn4")
 width = 24
 height = 24
 
-[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("draging_sprite")]
+[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("draging_sprite", "link_line")]
 script = ExtResource("1_8ek2w")
 draging_sprite = NodePath("SelectedSprite")
+link_line = NodePath("LinkLine")
+
+[node name="LinkLine" type="Line2D" parent="." unique_id=1162823384]
+points = PackedVector2Array(0, 0, 30, 0)
+width = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
 shape = SubResource("CircleShape2D_4kxuq")
