@@ -52,4 +52,5 @@ offset_top = -361.5
 offset_right = 640.0
 offset_bottom = 361.5
 
+[connection signal="timeout" from="BlackHole" to="." method="_on_black_hole_timeout"]
 [connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]

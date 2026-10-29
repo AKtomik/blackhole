@@ -2,6 +2,7 @@ extends Node2D
 
 #Prépare l'accès aux objets dans la scène dont on a besoin
 @onready var menu_parametres = $CanvasLayer/Menu_parametres
+@onready var planets = $Planets
 
 # Signal à envoyer quand on veut quitter la scène
 signal Quitter()
@@ -41,3 +42,7 @@ func on_exit_parametres() -> void :
 	menu_parametres.set_process(false)
 
 #endregion
+
+
+func _on_black_hole_timeout() -> void:
+	pass

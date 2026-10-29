@@ -11,6 +11,7 @@ var constelation_required_all : bool = true
 var constelation_maximal_planet_distance : float = 100
 
 @onready var timer = $Timer
+signal timeout
 
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
@@ -32,6 +33,8 @@ func _ready() -> void:
 ## Sortie : Rien |
 ## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
 func create_constellation() -> void :
+	if planets_amount != 2 :
+		timer.start(20)
 	planets_amount = planets_amount * 3/2
 	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
@@ -138,3 +141,8 @@ func release_constelator():
 	
 
 #endregion
+
+
+func _on_timer_timeout() -> void:
+	print("Temps écoulé")
+	timeout.emit()
