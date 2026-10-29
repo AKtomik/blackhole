@@ -3,6 +3,10 @@ extends Node2D
 
 # the amount of planets required to finish a constelation
 var constelation_required_planet_amount : int = 30
+# do finish constelation when required amount is hit
+var constelation_required_finish : bool = true
+# do set the constelation required amount to planets nomber 
+var constelation_required_all : bool = true
 # the default max distance between to planets to link both
 var constelation_maximal_planet_distance : float = 100
 
@@ -30,7 +34,7 @@ func create_constellation(number : int) -> void :
 	for i in range(coordinates.size()):
 		print("spawn planet ", i)
 		spawn_planet(coordinates[i], max(coordinates[i].distance_to(coordinates[i-1]), coordinates[i].distance_to(coordinates[(i+1)%coordinates.size()])))
-	planets_ready()# usefull for link clicks
+	connect_planets()# usefull for link clicks
 
 ## Entrée : amount un entier (int) |
 ## Sortie : result un une liste de vecteurs (Array[Vector2]) |
@@ -70,11 +74,12 @@ func spawn_planet(coo : Vector2, distance_max : float = constelation_maximal_pla
 
 # LINK CLICK
 
-func planets_ready() -> void:
-	for child in planets_parent.get_children():
-		if child is Planet:
-			child.planet_clicked.connect(start_constelator)
-			child.planet_hovered.connect(join_constelator)
+func connect_planets() -> void:
+	var children : Array[Planet] = planets_parent.get_children().filter(func(node: Node): return node is Planet)
+	if (constelation_required_all): constelation_required_planet_amount = children.size()
+	for child in children:
+		if (!child.planet_clicked.is_connected(start_constelator)): child.planet_clicked.connect(start_constelator)
+		if (!child.planet_hovered.is_connected(join_constelator)): child.planet_hovered.connect(join_constelator)
 
 # LINK STATE
 
@@ -106,6 +111,9 @@ func join_constelator(planet: Planet):
 	last_planet.constelation_link(planet)
 	linking_planets.append(planet)
 	planet.join_constelation(linking_planets.size())
+
+	if (constelation_required_finish && linking_planets.size() >= constelation_required_planet_amount):
+		release_constelator()
 
 
 func release_constelator():
