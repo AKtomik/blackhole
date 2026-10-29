@@ -30,7 +30,7 @@ func _ready() -> void:
 ## Sortie : Rien |
 ## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
 func create_constellation() -> void :
-	planets_amount = planets_amount * 2
+	planets_amount = planets_amount * 3/2
 	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
@@ -38,14 +38,14 @@ func create_constellation() -> void :
 		spawn_planet(coordinates[i], max(coordinates[i].distance_to(coordinates[i-1]), coordinates[i].distance_to(coordinates[(i+1)%coordinates.size()])))
 	connect_planets()# usefull for link clicks
 
-## Entrée : amount un entier (int) |
+## Entrée : amount un nombre flottant (float) |
 ## Sortie : result un une liste de vecteurs (Array[Vector2]) |
 ## Action : Crée autant de coordonnées que précisé en entrée et les retourne sous forme de liste |
-func create_coordinates(amount : int) -> Array[Vector2] :
+func create_coordinates(amount : float) -> Array[Vector2] :
 	var result : Array[Vector2] = []
 	var rect : Rect2 = camera.get_viewport_rect()
 	var current_degree = 0
-	var degree_step = 360/amount
+	var degree_step = 360.0/amount
 	var blackhole_offset = 300
 	
 	for i in range(amount):

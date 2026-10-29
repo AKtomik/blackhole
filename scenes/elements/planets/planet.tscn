@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://b7mx5aydxd863" path="res://scripts/planet.gd" id="1_8ek2w"]
 [ext_resource type="Shader" uid="uid://bdnxxyuq7aefg" path="res://scenes/elements/planets/planet.gdshader" id="2_mjsi5"]
-[ext_resource type="Texture2D" uid="uid://brgvtoa6p2b3m" path="res://assets/images/UI/planetes/planete (1).png" id="2_t5wgm"]
-[ext_resource type="Texture2D" uid="uid://c62j0mhbuqxfq" path="res://assets/images/UI/planetes/planete (2).png" id="3_n7oyo"]
-[ext_resource type="Texture2D" uid="uid://bai8ks5odcsdr" path="res://assets/images/UI/planetes/planete (3).png" id="4_r5i1o"]
-[ext_resource type="Texture2D" uid="uid://rsmo3vaboyx7" path="res://assets/images/UI/planetes/planete (4).png" id="5_11stl"]
-[ext_resource type="Texture2D" uid="uid://bxk1uswfvbak2" path="res://assets/images/UI/planetes/planete (5).png" id="6_lcts6"]
-[ext_resource type="Texture2D" uid="uid://bqf2l0kimu17n" path="res://assets/images/UI/planetes/planete (6).png" id="7_7u4yc"]
-[ext_resource type="Texture2D" uid="uid://d22gko76cbvfg" path="res://assets/images/UI/planetes/planete (7).png" id="8_f766o"]
-[ext_resource type="Texture2D" uid="uid://b8wk38xp8040m" path="res://assets/images/UI/planetes/planete (8).png" id="9_xirpu"]
+[ext_resource type="Texture2D" uid="uid://ndy4yveqevdj" path="res://assets/images/UI/planetes/sprite_tileable/tile_01.png" id="2_t5wgm"]
+[ext_resource type="Texture2D" uid="uid://bykbe7n5f2qvq" path="res://assets/images/UI/planetes/sprite_tileable/tile_02.png" id="3_n7oyo"]
+[ext_resource type="Texture2D" uid="uid://dug1t6fybq4xy" path="res://assets/images/UI/planetes/sprite_tileable/tile_03.png" id="4_r5i1o"]
+[ext_resource type="Texture2D" uid="uid://dief45psfg2td" path="res://assets/images/UI/planetes/sprite_tileable/tile_04.png" id="5_11stl"]
+[ext_resource type="Texture2D" uid="uid://dn253sx863wqa" path="res://assets/images/UI/planetes/sprite_tileable/tile_05.png" id="6_lcts6"]
+[ext_resource type="Texture2D" uid="uid://b2wx883g2cb4" path="res://assets/images/UI/planetes/sprite_tileable/tile_06.png" id="7_7u4yc"]
+[ext_resource type="Texture2D" uid="uid://5fs4i6m5n60a" path="res://assets/images/UI/planetes/sprite_tileable/tile_07.png" id="8_f766o"]
+[ext_resource type="Texture2D" uid="uid://e6lw0xhnshui" path="res://assets/images/UI/planetes/sprite_tileable/tile_08.png" id="9_xirpu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
 radius = 15.0
