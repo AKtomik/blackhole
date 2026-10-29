@@ -28,6 +28,7 @@ texture = ExtResource("4_jsx7o")
 
 [node name="Planet" parent="Planets" unique_id=378393114 instance=ExtResource("2_ma5ay")]
 position = Vector2(266, 73)
+position = Vector2(625, -345)
 
 [node name="Menu_parametres" parent="." unique_id=1037719077 instance=ExtResource("4_4c1q5")]
 visible = false
