@@ -29,6 +29,7 @@ func _ready() -> void:
 @export var planets_scenes : Array[PackedScene] = []
 @export var camera : Camera2D
 @export var planets_parent : Node2D
+@export var planet_scale : float = 1
 
 #region planets generation
 ## Entrée : Rien |
@@ -78,7 +79,7 @@ func spawn_planet(coo : Vector2, distance_max : float = constelation_maximal_pla
 	planets_parent.add_child(planet_node)
 	planet_node.global_position = coo
 	planet_node.line_max_range = distance_max
-	planet_node.planet_size = randf_range(.75, 2)
+	planet_node.planet_size = (distance_max**2 / planet_scale**2) + 0.6
 
 #endregion
 
