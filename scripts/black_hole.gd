@@ -115,8 +115,9 @@ func release_constelator():
 	else:
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
+		$SFX_Unselect_Star.play()
 	linking_planets = []
-	$SFX_Unselect_Star.play()
+	
 	
 
 #endregion

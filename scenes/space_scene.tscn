@@ -19,7 +19,8 @@ camera = NodePath("Camera2D")
 planets_parent = NodePath("../Planets")
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="BlackHole" unique_id=1819844149]
-event_guid = "{00000041-004d-0000-2f00-000000000000}"
+event_name = "event:/SFX_Unselect_Star"
+event_guid = "{ff97faaa-4a10-4112-a04a-44fff835f78b}"
 
 [node name="Sprite2D" type="Sprite2D" parent="BlackHole" unique_id=1785093878]
 scale = Vector2(0.5, 0.5)
