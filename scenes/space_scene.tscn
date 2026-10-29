@@ -24,6 +24,16 @@ texture = ExtResource("4_jsx7o")
 
 [node name="Camera2D" type="Camera2D" parent="BlackHole" unique_id=2081882458]
 
+[node name="MUSIC" type="FmodEventEmitter2D" parent="BlackHole/Camera2D" unique_id=350573087]
+event_name = "event:/MUSIC"
+event_guid = "{6add997a-5166-47ea-a859-7ad7e5be7b8a}"
+fmod_parameters/Blackhole_Size/id = -8254653874567266056
+fmod_parameters/Blackhole_Size = 0.0
+fmod_parameters/Blackhole_Size/variant_type = 3
+fmod_parameters/EndGame/id = 8199282092914932788
+fmod_parameters/EndGame = 0
+fmod_parameters/EndGame/variant_type = 2
+
 [node name="FmodListener2D" type="FmodListener2D" parent="BlackHole/Camera2D" unique_id=1822220154]
 
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
@@ -33,10 +43,6 @@ position = Vector2(625, -345)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
-
-[node name="LoopTest" type="FmodEventEmitter2D" parent="." unique_id=350573087]
-event_name = "event:/Test"
-event_guid = "{48b88b12-3e51-4113-ab31-8e60befa2849}"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444755364]
 
