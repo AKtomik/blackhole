@@ -44,6 +44,14 @@ shape = SubResource("CircleShape2D_4kxuq")
 
 [node name="Shpere" type="Node2D" parent="." unique_id=53907553]
 
+[node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
+event_name = "event:/SFX_Select_Star"
+event_guid = "{6b36fdec-bcbf-4397-83c5-22afe263b43b}"
+
+[node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=535897319]
+event_name = "event:/SFX_Unselect_Star"
+event_guid = "{ff97faaa-4a10-4112-a04a-44fff835f78b}"
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

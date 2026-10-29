@@ -57,6 +57,8 @@ func join_constelation(planet_number: int):
 	link_line_node.visible = true
 	link_ray_node.enabled = true
 	line_to(position)
+	$SFX_Select_Star.set_parameter("NumSelectedStars",planet_number)
+	$SFX_Select_Star.play()
 
 func constelation_link(next_planet: Planet):
 	is_last = false
@@ -80,10 +82,13 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	print("mouse click on planet ", self, "with event", event)
 	planet_clicked.emit(self)
 
+
 func _on_mouse_entered() -> void:
 	if !(Input.is_action_pressed("left_click") && is_clickable): return
 	print("mouse join planet", self)
 	planet_hovered.emit(self)
+	
 
 func _on_mouse_exited() -> void:
 	print("mouse exit on planet ", self)
+	
