@@ -1,18 +1,14 @@
 [gd_scene format=3 uid="uid://ne8vljrbvf4w"]
 
 [ext_resource type="Script" uid="uid://b7mx5aydxd863" path="res://scripts/planet.gd" id="1_8ek2w"]
+[ext_resource type="Shader" uid="uid://bdnxxyuq7aefg" path="res://scenes/elements/planets/planet.gdshader" id="2_mjsi5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
 radius = 15.0
 
-[sub_resource type="Gradient" id="Gradient_8ek2w"]
-offsets = PackedFloat32Array(0, 0.99657536)
-colors = PackedColorArray(0, 0, 1, 1, 0, 0, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mjsi5"]
-gradient = SubResource("Gradient_8ek2w")
-width = 16
-height = 16
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kxuq"]
+shader = ExtResource("2_mjsi5")
+shader_parameter/rotation_speed = 0.1
 
 [sub_resource type="Gradient" id="Gradient_dtwn4"]
 offsets = PackedFloat32Array(0, 0.99657536)
@@ -39,8 +35,12 @@ target_position = Vector2(30, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
 shape = SubResource("CircleShape2D_4kxuq")
 
-[node name="NormalSprite" type="Sprite2D" parent="." unique_id=2024272064]
-texture = SubResource("GradientTexture2D_mjsi5")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=757454432]
+material = SubResource("ShaderMaterial_4kxuq")
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 
 [node name="SelectedSprite" type="Sprite2D" parent="." unique_id=2091914226]
 visible = false
@@ -51,6 +51,9 @@ texture = SubResource("GradientTexture2D_x2olr")
 [node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
 event_name = "event:/SFX_Select_Star"
 event_guid = "{6b36fdec-bcbf-4397-83c5-22afe263b43b}"
+fmod_parameters/NumSelectedStars/id = -5901918704000455688
+fmod_parameters/NumSelectedStars = 1
+fmod_parameters/NumSelectedStars/variant_type = 2
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=535897319]
 event_name = "event:/SFX_Unselect_Star"
