@@ -17,7 +17,9 @@ signal planet_hovered(Planet)
 func _ready() -> void:
 	selected_sprite_node.visible = false
 	link_line_node.visible = false
-	planet_sprite_node.texture = sprite_textures.pick_random()
+	var texture = sprite_textures.pick_random()
+	planet_sprite_node.texture = texture
+	selected_sprite_node.texture = texture
 
 func _process(_delta: float) -> void:
 	if (is_last):

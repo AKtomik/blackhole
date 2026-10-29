@@ -28,9 +28,6 @@ texture = ExtResource("4_jsx7o")
 
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
 
-[node name="Planet" parent="Planets" unique_id=378393114 instance=ExtResource("2_ma5ay")]
-position = Vector2(625, -345)
-
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
 

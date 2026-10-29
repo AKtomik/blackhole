@@ -32,10 +32,11 @@ texture = ExtResource("2_lpu1y")
 [node name="SelectedSprite" type="Sprite2D" parent="." unique_id=2091914226]
 visible = false
 self_modulate = Color(1, 0, 1, 0.8901961)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_lpu1y")
 
 [node name="LinkRay" type="RayCast2D" parent="." unique_id=1480183864]
+exclude_parent = false
 target_position = Vector2(30, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
