@@ -16,6 +16,7 @@ func _ready() -> void:
 # GENERATION
 
 @export var planets_amount : int = 30
+@export var min_planet_spacing = 50
 @export var planets_scenes : Array[PackedScene] = []
 @export var camera : Camera2D
 @export var planets_parent : Node2D
@@ -46,8 +47,8 @@ func create_coordinates(amount : int) -> Array[Vector2] :
 		var y = sin(current_degree)*randf_range(blackhole_offset, 345)
 		var rand_pos = Vector2(x, y)
 		for other_planet in result :
-			if rand_pos.distance_to(other_planet) < 50 :
-				print("TROP COURT")
+			if rand_pos.distance_to(other_planet) < min_planet_spacing :
+				pass
 		
 		current_degree += degree_step
 		result.append(rand_pos)
