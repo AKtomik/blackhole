@@ -39,18 +39,15 @@ func create_coordinates(amount : int) -> Array[Vector2] :
 	var rect : Rect2 = camera.get_viewport_rect()
 	var current_degree = 0
 	var degree_step = 360/amount
-	var blackhole_offset = 250
+	var blackhole_offset = 300
 	
 	for i in range(amount):
-		#var rand_pos = Vector2(
-		#	randf_range(rect.position.x, rect.position.x+rect.size.x) - rect.size.x/2,
-		#	randf_range(rect.position.y, rect.position.x+rect.size.y) - rect.size.y/2
-		#)
 		var x = cos(current_degree)*blackhole_offset
-		var y = sqrt(blackhole_offset*blackhole_offset + x*x)
+		var y = sin(current_degree)*blackhole_offset
+		#sqrt only returns positive values, we want y to be negative when drawing the bottom of the circle (0 - 180 degrees)
 		if current_degree < 180 :
 			y = -y
-		var rand_pos = Vector2(y, x)
+		var rand_pos = Vector2(x, y)
 		current_degree += degree_step
 		
 		result.append(rand_pos)
@@ -84,24 +81,30 @@ var linking_planets : Array[Planet] = []
 func is_linking() -> bool:
 	return !linking_planets.is_empty()
 
+
 # start a constelation with this star
 func start_constelator(planet: Planet):
 	if (is_linking()):
 		print_debug("trying to start a constelation but making already one!")
 		return
 	linking_planets = [planet]
-	planet.join_constelation()
+	planet.join_constelation(constelation_maximal_planet_distance)
+
 
 # join the current constelation in build
 func join_constelator(planet: Planet):
 	if (!is_linking()):
 		print_debug("trying to join a constelation but not making one!")
 		return
+	
 	var last_planet = linking_planets[linking_planets.size() - 1]
 	var planet_distance = planet.position.distance_to(last_planet.position)
 	if (planet_distance > constelation_maximal_planet_distance): return
+	
+	last_planet.constelation_link(planet)
 	linking_planets.append(planet)
-	planet.join_constelation()
+	planet.join_constelation(constelation_maximal_planet_distance)
+
 	
 func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
