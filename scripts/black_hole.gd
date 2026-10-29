@@ -108,7 +108,7 @@ func join_constelator(planet: Planet):
 	
 	var last_planet = linking_planets[linking_planets.size() - 1]
 	var planet_distance = planet.position.distance_to(last_planet.position)
-	if (planet_distance > last_planet.line_max_range): return
+	if (planet_distance > last_planet.line_max_range + planet.planet_size): return
 	
 	last_planet.constelation_link(planet)
 	linking_planets.append(planet)

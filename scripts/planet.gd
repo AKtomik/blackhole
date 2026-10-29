@@ -1,6 +1,8 @@
 class_name Planet
 extends Area2D
 
+@export var shape_node : CollisionShape2D
+
 @export_group("Textures")
 @export var planet_sprite_node : Sprite2D
 @export var selected_sprite_node : Sprite2D
@@ -14,12 +16,18 @@ extends Area2D
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
 
+var initial_scale_planet_sprite
+var initial_scale_shape
+
 func _ready() -> void:
 	selected_sprite_node.visible = false
 	link_line_node.visible = false
 	var texture = sprite_textures.pick_random()
 	planet_sprite_node.texture = texture
 	selected_sprite_node.texture = texture
+	initial_scale_planet_sprite = planet_sprite_node.scale
+	initial_scale_shape = shape_node.scale
+	planet_size = randf_range(.75, 2)
 
 func _process(_delta: float) -> void:
 	if (is_last):
@@ -34,6 +42,10 @@ func _process(_delta: float) -> void:
 # GRAPHISM
 
 var line_max_range: float
+var _planet_size: float
+var planet_size:
+	get: return _planet_size
+	set(value): change_planet_size(value)
 
 func line_to(to_global_pos: Vector2, skip_range_cap: bool = false):
 	var to_local_pos = to_global_pos - position
@@ -41,6 +53,12 @@ func line_to(to_global_pos: Vector2, skip_range_cap: bool = false):
 		to_local_pos = to_local_pos.normalized() * line_max_range
 	link_line_node.set_point_position(1, to_local_pos)
 	if (link_ray_node.enabled): link_ray_node.target_position = to_local_pos
+
+
+func change_planet_size(size: float):
+	_planet_size = size
+	planet_sprite_node.scale = Vector2(size, size) * initial_scale_planet_sprite
+	shape_node.scale = Vector2(size, size) * initial_scale_shape
 
 
 # STATES

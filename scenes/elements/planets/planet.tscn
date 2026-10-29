@@ -11,17 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://b8wk38xp8040m" path="res://assets/images/UI/planetes/planete (8).png" id="9_f766o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
-radius = 15.0
+radius = 21.17
 
-[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("planet_sprite_node", "selected_sprite_node", "link_line_node", "link_ray_node")]
+[node name="Planet" type="Area2D" unique_id=378393114 node_paths=PackedStringArray("shape_node", "planet_sprite_node", "selected_sprite_node", "link_line_node", "link_ray_node")]
 script = ExtResource("1_8ek2w")
+shape_node = NodePath("CollisionShape")
 planet_sprite_node = NodePath("NormalSprite")
-selected_sprite_node = NodePath("SelectedSprite")
+selected_sprite_node = NodePath("NormalSprite/SelectedSprite")
 sprite_textures = Array[Texture2D]([ExtResource("2_lpu1y"), ExtResource("3_t5wgm"), ExtResource("4_n7oyo"), ExtResource("5_r5i1o"), ExtResource("6_11stl"), ExtResource("7_lcts6"), ExtResource("8_7u4yc"), ExtResource("9_f766o")])
 link_line_node = NodePath("LinkLine")
 link_ray_node = NodePath("LinkRay")
 
 [node name="LinkLine" type="Line2D" parent="." unique_id=1162823384]
+z_index = -1
 points = PackedVector2Array(0, 0, 30, 0)
 width = 5.0
 
@@ -29,24 +31,24 @@ width = 5.0
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_lpu1y")
 
-[node name="SelectedSprite" type="Sprite2D" parent="." unique_id=2091914226]
+[node name="SelectedSprite" type="Sprite2D" parent="NormalSprite" unique_id=2091914226]
 visible = false
 self_modulate = Color(1, 0, 1, 0.8901961)
-scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_lpu1y")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=216014902]
+shape = SubResource("CircleShape2D_4kxuq")
 
 [node name="LinkRay" type="RayCast2D" parent="." unique_id=1480183864]
 exclude_parent = false
 target_position = Vector2(30, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=216014902]
-shape = SubResource("CircleShape2D_4kxuq")
-
-[node name="Shpere" type="Node2D" parent="." unique_id=53907553]
-
 [node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
 event_name = "event:/SFX_Select_Star"
 event_guid = "{6b36fdec-bcbf-4397-83c5-22afe263b43b}"
+fmod_parameters/NumSelectedStars/id = -5901918704000455688
+fmod_parameters/NumSelectedStars = 1
+fmod_parameters/NumSelectedStars/variant_type = 2
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=535897319]
 event_name = "event:/SFX_Unselect_Star"
