@@ -14,12 +14,18 @@ var current_level : int = 0
 
 var game_over = false
 
+var current_sprite : int = 11
+
+@onready var blackhole_sprite = $Sprite2D
+
 @onready var timer = $Timer
+var time_allowed = 20
 signal timeout
 
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
 		release_constelator()
+	check_for_blackhole_sprite_change()
 
 func _ready() -> void:
 	create_constellation()
@@ -39,10 +45,12 @@ func _ready() -> void:
 ## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
 func create_constellation() -> void :
 	if planets_amount > 2 :
-		timer.start(20)
+		timer.start(time_allowed)
 	planets_amount = planets_amount * 3/2
 	if planets_amount > 30 :
 		planets_amount = 30
+		if time_allowed > 12 :
+			time_allowed -= 1
 	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
@@ -67,6 +75,7 @@ func create_coordinates(amount : float) -> Array[Vector2] :
 		var rand_pos = Vector2(x, y)
 		for other_planet in result :
 			if rand_pos.distance_to(other_planet) < min_planet_spacing :
+				#S'il faut check si les planètes sont trop proches il faut le faire ici ! :3
 				pass
 		
 		current_degree += degree_step
@@ -152,8 +161,29 @@ func release_constelator():
 
 #endregion
 
-
+#region Timer
 func _on_timer_timeout() -> void:
 	game_over = true
 	print("Temps écoulé au niveau : ", current_level)
 	timeout.emit()
+
+func check_for_blackhole_sprite_change() -> void :
+	var sprites = [
+		"res://assets/images/chara/anim/1.png",
+		"res://assets/images/chara/anim/2.png",
+		"res://assets/images/chara/anim/3.png",
+		"res://assets/images/chara/anim/4.png",
+		"res://assets/images/chara/anim/5.png",
+		"res://assets/images/chara/anim/6.png",
+		"res://assets/images/chara/anim/7.png",
+		"res://assets/images/chara/anim/8.png",
+		"res://assets/images/chara/anim/9.png",
+		"res://assets/images/chara/anim/10.png",
+		"res://assets/images/chara/anim/11.png",
+	]
+	print("LE sprite actuel devrait être : ", int(timer.time_left/time_allowed*10))
+	if int(timer.time_left/time_allowed*10) != current_sprite:
+		current_sprite = int(timer.time_left/time_allowed*10)
+		blackhole_sprite.texture = load(sprites[current_sprite])
+		print("SPRITE CHANGE")
+#endregion
