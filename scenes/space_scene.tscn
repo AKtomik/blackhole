@@ -46,6 +46,7 @@ fmod_parameters/EndGame/variant_type = 2
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444755364]
+layer = 4
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1383605581]
 material = ExtResource("6_6scvu")
