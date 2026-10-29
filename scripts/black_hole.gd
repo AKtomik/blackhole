@@ -181,9 +181,7 @@ func check_for_blackhole_sprite_change() -> void :
 		"res://assets/images/chara/anim/10.png",
 		"res://assets/images/chara/anim/11.png",
 	]
-	print("LE sprite actuel devrait être : ", int(timer.time_left/time_allowed*10))
 	if int(timer.time_left/time_allowed*10) != current_sprite:
 		current_sprite = int(timer.time_left/time_allowed*10)
 		blackhole_sprite.texture = load(sprites[current_sprite])
-		print("SPRITE CHANGE")
 #endregion
