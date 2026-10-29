@@ -75,7 +75,8 @@ func spawn_planet(coo : Vector2, distance_max : float = constelation_maximal_pla
 # LINK CLICK
 
 func connect_planets() -> void:
-	var children : Array[Planet] = planets_parent.get_children().filter(func(node: Node): return node is Planet)
+	var children : Array[Planet]
+	children.assign(planets_parent.get_children().filter(func(node: Node): return node is Planet) as Array[Planet])
 	if (constelation_required_all): constelation_required_planet_amount = children.size()
 	for child in children:
 		if (!child.planet_clicked.is_connected(start_constelator)): child.planet_clicked.connect(start_constelator)
