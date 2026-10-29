@@ -89,7 +89,7 @@ func start_constelator(planet: Planet):
 		print_debug("trying to start a constelation but making already one!")
 		return
 	linking_planets = [planet]
-	planet.join_constelation(constelation_maximal_planet_distance)
+	planet.join_constelation()
 
 
 # join the current constelation in build
@@ -104,9 +104,9 @@ func join_constelator(planet: Planet):
 	
 	last_planet.constelation_link(planet)
 	linking_planets.append(planet)
-	planet.join_constelation(constelation_maximal_planet_distance)
+	planet.join_constelation()
 
-	
+
 func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
 		print("have linked ", linking_planets.size(), " planets")

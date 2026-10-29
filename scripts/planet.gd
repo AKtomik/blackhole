@@ -40,14 +40,13 @@ var is_clickable : bool = true
 var is_selected : bool = false
 var is_last : bool = false
 
-func join_constelation(join_range: float):
+func join_constelation():
 	is_selected = true
 	is_last = true
 	is_clickable = false
 	draging_sprite.visible = true
 	link_line.visible = true
 	link_ray.enabled = true
-	line_max_range = join_range
 	line_to(position)
 
 func constelation_link(next_planet: Planet):
