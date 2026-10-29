@@ -1,22 +1,29 @@
 class_name Planet
 extends Area2D
 
-@export var draging_sprite : Sprite2D
-@export var link_line : Line2D
-@export var link_ray : RayCast2D
+@export_group("Textures")
+@export var planet_sprite_node : Sprite2D
+@export var selected_sprite_node : Sprite2D
+
+@export var sprite_textures : Array[Texture2D]
+
+@export_group("Links")
+@export var link_line_node : Line2D
+@export var link_ray_node : RayCast2D
 
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
 
 func _ready() -> void:
-	draging_sprite.visible = false
-	link_line.visible = false 
+	selected_sprite_node.visible = false
+	link_line_node.visible = false
+	planet_sprite_node.texture = sprite_textures.pick_random()
 
 func _process(_delta: float) -> void:
 	if (is_last):
 		line_to(get_global_mouse_position())
-		if (link_ray.enabled && link_ray.is_colliding()):
-			var collider = link_ray.get_collider()
+		if (link_ray_node.enabled && link_ray_node.is_colliding()):
+			var collider = link_ray_node.get_collider()
 			print("colliding with ", collider)
 			if (collider is Planet):
 				print("collider is a planet!")
@@ -30,8 +37,8 @@ func line_to(to_global_pos: Vector2, skip_range_cap: bool = false):
 	var to_local_pos = to_global_pos - position
 	if (!skip_range_cap && position.distance_to(to_global_pos) > line_max_range):
 		to_local_pos = to_local_pos.normalized() * line_max_range
-	link_line.set_point_position(1, to_local_pos)
-	if (link_ray.enabled): link_ray.target_position = to_local_pos
+	link_line_node.set_point_position(1, to_local_pos)
+	if (link_ray_node.enabled): link_ray_node.target_position = to_local_pos
 
 
 # STATES
@@ -44,9 +51,9 @@ func join_constelation(planet_number: int):
 	is_selected = true
 	is_last = true
 	is_clickable = false
-	draging_sprite.visible = true
-	link_line.visible = true
-	link_ray.enabled = true
+	selected_sprite_node.visible = true
+	link_line_node.visible = true
+	link_ray_node.enabled = true
 	line_to(position)
 
 func constelation_link(next_planet: Planet):
@@ -57,9 +64,9 @@ func cancel_constelation():
 	is_selected = false
 	is_last = false
 	is_clickable = true
-	draging_sprite.visible = false
-	link_line.visible = false
-	link_ray.enabled = false
+	selected_sprite_node.visible = false
+	link_line_node.visible = false
+	link_ray_node.enabled = false
 
 func finish_constelation():
 	queue_free()
