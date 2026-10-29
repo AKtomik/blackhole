@@ -1,6 +1,15 @@
 class_name BlackHole
 extends Node2D
 
+# the amount of planets required to finisha constelation
+var constelation_required_planet_amount : int = 5
+var constelation_maximal_planet_distance : float = 3
+
+func _process(delta: float) -> void:
+	constelation_release_check()
+
+# GENERATION
+
 @export var planets_amount : int = 30
 @export var planets_scenes : Array[PackedScene] = []
 @export var camera : Camera2D
@@ -19,5 +28,40 @@ func _ready() -> void:
 			)
 		planet_node.global_position = rand_pos
 
-func _process(delta: float) -> void:
-	pass
+# CONSTELATION MANAGEMENT
+
+func constelation_release_check() -> void:
+	if (is_linking() && Input.is_action_just_released("left_click")):
+		release_constelation()
+
+# STATES
+
+var linking_planets : Array[Planet] = []
+
+func is_linking() -> bool:
+	return !linking_planets.is_empty()
+
+# start a constelation with this star
+func start_constelation(planet: Planet):
+	if (is_linking()):
+		print_debug("trying to start a constelation but making already one!")
+		return
+	linking_planets = [planet]
+	planet.join_constelation()
+
+# join the current constelation build
+func join_constelation(planet: Planet):
+	if (!is_linking()):
+		print_debug("trying to join a constelation but not making one!")
+		return
+	linking_planets = [planet]
+	planet.join_constelation()
+	
+func release_constelation():
+	if (linking_planets.size() >= constelation_required_planet_amount):
+		print("have linked ", linking_planets.size(), " planets")
+		for planet in linking_planets: planet.finish_constelation()
+	else:
+		print("failed linking ", linking_planets.size(), " planets")
+		for planet in linking_planets: planet.cancel_constelation()
+	linking_planets = []
