@@ -167,9 +167,9 @@ func release_constelator():
 		$SFX_Confirm_Alignment.set_parameter("NumSelectedStars",planets_amount - 4)
 		$SFX_Confirm_Alignment.play()
 	else:
+		$SFX_Unselect_Star.play()
 		print("failed linking ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.cancel_constelation()
-		$SFX_Unselect_Star.play()
 	linking_planets = []
 	
 	
