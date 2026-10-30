@@ -65,6 +65,7 @@ fmod_parameters/NumSelectedStars = 1
 fmod_parameters/NumSelectedStars/variant_type = 2
 
 [node name="Sprite2D3" type="Sprite2D" parent="BlackHole" unique_id=536670305]
+visible = false
 material = ExtResource("6_6scvu")
 texture = ExtResource("22_ofi2h")
 
