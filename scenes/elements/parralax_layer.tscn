@@ -4,7 +4,7 @@
 
 [node name="ParralaxLayer" type="Parallax2D" unique_id=1106213186]
 repeat_size = Vector2(1920, 1080)
-repeat_times = 8
+repeat_times = 16
 script = ExtResource("1_e3lry")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=443609172]
