@@ -118,6 +118,7 @@ libraries/ = SubResource("AnimationLibrary_en8di")
 script = ExtResource("4_fnnx3")
 camera_attraction_toward_center = 40.0
 growth_curve = SubResource("Curve_bt6kb")
+growth_speed = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="CameraPhysic" unique_id=716480409]
 

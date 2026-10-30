@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 
 func growth_anim(time):
 	growing = true
-	Parralax.growth_anim(time)
-	await CameraPhysic.growth_anim(time)
+	Parralax.growth_anim(time/growth_speed)
+	await CameraPhysic.growth_anim(time/growth_speed)
 	growing = false
 	black_hole.scale = Vector2(1.0, 1.0)
 
