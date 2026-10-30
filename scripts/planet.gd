@@ -15,6 +15,7 @@ extends Area2D
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
 
+# avoid enabling both please 0.0
 var do_hover_emit_with_mouse = false
 var do_hover_emit_with_ray = true
 
@@ -82,7 +83,7 @@ func join_constelation(planet_number: int):
 	is_clickable = false
 	selected_sprite_node.visible = true
 	link_line_node.visible = true
-	link_ray_node.enabled = true
+	if (do_hover_emit_with_ray): link_ray_node.enabled = true
 	line_to(position)
 	$SFX_Select_Star.set_parameter("NumSelectedStars",planet_number)
 	$SFX_Select_Star.play()
@@ -111,7 +112,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func _on_mouse_entered() -> void:
-	if !(Input.is_action_pressed("left_click") && is_clickable): return
+	if do_hover_emit_with_mouse || !(Input.is_action_pressed("left_click") && is_clickable): return
 	print("mouse join planet", self)
 	planet_hovered.emit(self)
 	
