@@ -11,6 +11,5 @@ func _process(delta):
 	pass
 
 func _on_exit_button_pressed():
-	FmodServer.play_one_shot("SFX_Click")
 	exit_parametres.emit()
 	set_process(false)
