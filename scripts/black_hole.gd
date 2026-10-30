@@ -9,15 +9,15 @@ var constelation_required_finish : bool = true
 var constelation_required_all : bool = true
 # the default max distance between to planets to link both
 var constelation_maximal_planet_distance : float = 100
-
+#Number of spawn that were made so far, which is the number of the current level
 var current_level : int = 0
-
+#If the player has lost yet or not
 var game_over = false
-
+#Current sprite displayed from the sprites given
 var current_sprite : int = 11
-
+#Node of the sprite of the blackhole
 @onready var blackhole_sprite = $Sprite2D
-
+#Node of the timer
 @onready var timer = $Timer
 #Max time allowed to complete the level (in the first levels)
 @export var time_allowed = 20
@@ -25,8 +25,8 @@ var current_sprite : int = 11
 @export var minimum_time = 12
 #The step at which the max time allowed decreases when the maximum amount of planets is reached
 @export var time_step = 1
+#Signal send when the timer runs out and the player looses
 signal timeout
-
 #Maximum amount of planets in a level
 @export var max_planets = 30
 
