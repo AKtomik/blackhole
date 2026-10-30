@@ -19,8 +19,16 @@ var current_sprite : int = 11
 @onready var blackhole_sprite = $Sprite2D
 
 @onready var timer = $Timer
-var time_allowed = 20
+#Max time allowed to complete the level (in the first levels)
+@export var time_allowed = 20
+#Minimum time allowed to complete the level (later levels)
+@export var minimum_time = 12
+#The step at which the max time allowed decreases when the maximum amount of planets is reached
+@export var time_step = 1
 signal timeout
+
+#Maximum amount of planets in a level
+@export var max_planets = 30
 
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
@@ -51,10 +59,10 @@ func create_constellation() -> void :
 	if planets_amount > 2 :
 		timer.start(time_allowed)
 	planets_amount = planets_amount * 3/2
-	if planets_amount > 30 :
-		planets_amount = 30
-		if time_allowed > 12 :
-			time_allowed -= 1
+	if planets_amount > max_planets :
+		planets_amount = max_planets
+		if time_allowed > minimum_time :
+			time_allowed -= time_step
 	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
