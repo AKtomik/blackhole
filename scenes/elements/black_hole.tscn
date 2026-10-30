@@ -31,6 +31,14 @@ _data = {
 &"RESET": SubResource("Animation_4pxaw")
 }
 
+[sub_resource type="Animation" id="Animation_iwk21"]
+resource_name = "AnimationDeath"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_en8di"]
+_data = {
+&"AnimationDeath": SubResource("Animation_iwk21")
+}
+
 [sub_resource type="Curve" id="Curve_bt6kb"]
 _limits = [1.0, 2.5, 0.0, 10.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.0, 0, 0, Vector2(6.5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
@@ -53,6 +61,7 @@ event_guid = "{ff97faaa-4a10-4112-a04a-44fff835f78b}"
 scale = Vector2(0.5, 0.5)
 
 [node name="Corps" type="Sprite2D" parent="Node2D" unique_id=1926116181]
+material = ExtResource("3_4pxaw")
 position = Vector2(-6, 86)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_en8di")
@@ -70,6 +79,7 @@ autoplay = &"Blackhole_spawn"
 
 [node name="AnimationDeath" type="AnimationPlayer" parent="Node2D" unique_id=145354886]
 root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_en8di")
 
 [node name="CameraPhysic" type="CharacterBody2D" parent="." unique_id=1510526725]
 script = ExtResource("4_fnnx3")
