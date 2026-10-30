@@ -125,6 +125,7 @@ func start_constelator(planet: Planet):
 		return
 	linking_planets = [planet]
 	planet.join_constelation(linking_planets.size())
+	
 
 
 # join the current constelation in build
@@ -150,6 +151,7 @@ func release_constelator():
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
 		create_constellation()
+		$SFX_Confirm_Alignment.set_parameter("NumSelectedStars",planets_amount - 4)
 		$SFX_Confirm_Alignment.play()
 	else:
 		print("failed linking ", linking_planets.size(), " planets")

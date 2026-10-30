@@ -49,7 +49,7 @@ func on_value_changed(value : float) -> void :
 ## Sortie : Rien |
 ## Action : Met le slider au bon endroit en fonction du bus |
 func set_slider_value () -> void:
-	h_slider.value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+	h_slider.value = FmodServer.get_global_parameter_by_name(bus_name)/100
 	set_valeur_audio()
 
 ## Entrée : Rien |
