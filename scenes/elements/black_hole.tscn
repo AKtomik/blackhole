@@ -142,5 +142,6 @@ event_name = "event:/SFX_Start"
 event_guid = "{414bbb66-3fc7-4ca6-b18f-413a2f0db755}"
 autoplay = true
 auto_release = true
+volume = 0.7
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
