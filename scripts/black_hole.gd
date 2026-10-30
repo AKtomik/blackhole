@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	check_for_blackhole_sprite_change()
 
 func _ready() -> void:
-	create_constellation()
+	start_level()
 
 # GENERATION
 
@@ -40,6 +40,10 @@ func _ready() -> void:
 @export var planet_scale : float = 1
 
 #region planets generation
+func start_level() -> void :
+	create_constellation()
+	game_over = false
+
 ## Entrée : Rien |
 ## Sortie : Rien |
 ## Action : Augmente le nombre de planètes  et crée la constellation du niveau composé d'autant de planètes que défini
@@ -149,7 +153,7 @@ func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
-		create_constellation()
+		start_level()
 		$SFX_Confirm_Alignment.play()
 	else:
 		print("failed linking ", linking_planets.size(), " planets")
