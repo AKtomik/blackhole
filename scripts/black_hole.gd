@@ -48,6 +48,7 @@ func _ready() -> void:
 @export var camera : Camera2D
 @export var planets_parent : Node2D
 @export var planet_scale : float = 1
+@export var SFX_Unselect_Star : FmodEventEmitter2D
 
 #region planets generation
 func start_level() -> void :
@@ -167,8 +168,8 @@ func release_constelator():
 		$SFX_Confirm_Alignment.set_parameter("NumSelectedStars",planets_amount - 4)
 		$SFX_Confirm_Alignment.play()
 	else:
-		$SFX_Unselect_Star.play()
 		print("failed linking ", linking_planets.size(), " planets")
+		SFX_Unselect_Star.play()
 		for planet in linking_planets: planet.cancel_constelation()
 	linking_planets = []
 	

@@ -164,7 +164,7 @@ layout_mode = 2
 visible = false
 layout_mode = 1
 
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=1024028361]
+[node name="Music_Start_Menu" type="FmodEventEmitter2D" parent="." unique_id=1024028361]
 event_name = "event:/Music_Menu_Start"
 event_guid = "{9eabc165-943e-44b3-bd3c-4610c6dc50ae}"
 autoplay = true
