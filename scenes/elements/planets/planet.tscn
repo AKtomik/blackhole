@@ -11,7 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://5fs4i6m5n60a" path="res://assets/images/UI/planetes/sprite_tileable/tile_07.png" id="8_f766o"]
 [ext_resource type="Texture2D" uid="uid://e6lw0xhnshui" path="res://assets/images/UI/planetes/sprite_tileable/tile_08.png" id="9_xirpu"]
 [ext_resource type="Texture2D" uid="uid://47wb4abv86mq" path="res://assets/images/selection/select_line_white.png" id="10_r5i1o"]
-[ext_resource type="Texture2D" uid="uid://dxjknbigvhrni" path="res://assets/images/selection/select_circle_white.png" id="12_11stl"]
+[ext_resource type="Texture2D" uid="uid://cpn814vfbkkjm" path="res://assets/images/selection/first_circle_white.png" id="12_11stl"]
+[ext_resource type="Script" uid="uid://c1gr5fn5d8vdf" path="res://scenes/elements/planets/selected_circle_sprite.gd" id="13_11stl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kxuq"]
 radius = 15.0
@@ -93,6 +94,7 @@ scale = Vector2(1.0015836, 1)
 [node name="SelectedCircleSprite" type="Sprite2D" parent="PlanetVisual" unique_id=2091914226]
 scale = Vector2(-0.08117892, -0.08117892)
 texture = ExtResource("12_11stl")
+script = ExtResource("13_11stl")
 
 [node name="SFX_Select_Star" type="FmodEventEmitter2D" parent="." unique_id=1267728748]
 event_name = "event:/SFX_Select_Star"
