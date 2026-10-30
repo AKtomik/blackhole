@@ -182,6 +182,7 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	print("Temps écoulé au niveau : ", current_level)
 	timeout.emit()
+	$CameraPhysic/Camera2D/MUSIC.set_parameter("EndGame",1)
 
 func check_for_blackhole_sprite_change() -> void :
 	var sprites = [
