@@ -8,6 +8,13 @@ extends Node2D
 # Signal à envoyer quand on veut quitter la scène
 signal Quitter()
 
+#Necessary things for the animation/transition
+var sample_point := 0.0
+@export var growth_curve : Curve
+@export var growth_speed := 1.0
+@onready var black_hole = $BlackHole
+var growing := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -16,6 +23,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("PAUSE"):
 		on_param_button_pressed()
+
+func _physics_process(delta: float) -> void:
+	if growing :
+		sample_point += (delta * growth_speed)
+		black_hole.scale.x = growth_curve.sample(sample_point) ; black_hole.scale.y = growth_curve.sample(sample_point)
+	else :
+		sample_point = 0.0
 
 ## Entrée : Rien |
 ## Sortie : Rien |

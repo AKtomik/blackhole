@@ -79,6 +79,7 @@ width = 5.0
 
 [node name="LinkRay" type="RayCast2D" parent="." unique_id=1480183864]
 target_position = Vector2(30, 0)
+collide_with_areas = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=216014902]
 shape = SubResource("CircleShape2D_4kxuq")

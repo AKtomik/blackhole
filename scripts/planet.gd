@@ -15,8 +15,14 @@ extends Area2D
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
 
+# avoid enabling both please 0.0
+var do_hover_emit_with_mouse = false
+var do_hover_emit_with_ray = true
+
+
 var initial_scale_visual
 var initial_scale_shape
+
 
 func _ready() -> void:
 	selected_sprite_node.visible = false
@@ -37,10 +43,10 @@ func _process(_delta: float) -> void:
 		line_to(get_global_mouse_position())
 		if (link_ray_node.enabled && link_ray_node.is_colliding()):
 			var collider = link_ray_node.get_collider()
-			print("colliding with ", collider)
-			if (collider is Planet):
+			print("ray colliding with ", collider)
+			if (collider is Planet && !collider.is_selected):
 				print("collider is a planet!")
-				collider.planet_hovered(collider)
+				collider.planet_hovered.emit(collider)
 
 # GRAPHISM
 
@@ -77,7 +83,8 @@ func join_constelation(planet_number: int):
 	is_clickable = false
 	selected_sprite_node.visible = true
 	link_line_node.visible = true
-	link_ray_node.enabled = true
+	shape_node.disabled = true
+	if (do_hover_emit_with_ray): link_ray_node.enabled = true
 	line_to(position)
 	$SFX_Select_Star.set_parameter("NumSelectedStars",planet_number)
 	$SFX_Select_Star.play()
@@ -93,6 +100,7 @@ func cancel_constelation():
 	selected_sprite_node.visible = false
 	link_line_node.visible = false
 	link_ray_node.enabled = false
+	shape_node.disabled = false
 
 func finish_constelation():
 	queue_free()
@@ -106,11 +114,6 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func _on_mouse_entered() -> void:
-	if !(Input.is_action_pressed("left_click") && is_clickable): return
+	if !do_hover_emit_with_mouse || !(Input.is_action_pressed("left_click") && is_clickable): return
 	print("mouse join planet", self)
 	planet_hovered.emit(self)
-	
-
-func _on_mouse_exited() -> void:
-	print("mouse exit on planet ", self)
-	
