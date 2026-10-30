@@ -54,6 +54,12 @@ DTextureList = Array[Texture]([ExtResource("24_p4776"), ExtResource("25_kpxmv"),
 
 [node name="BlackHole" parent="." unique_id=1995767824 node_paths=PackedStringArray("planets_parent") instance=ExtResource("2_jsx7o")]
 unique_name_in_owner = true
+time_allowed = 20
+minimum_time = 12
+time_step = 1
+max_planets = 30
+planets_amount = 2
+min_planet_spacing = 50
 planets_parent = NodePath("../Planets")
 planet_scale = 300.0
 
