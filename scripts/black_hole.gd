@@ -32,6 +32,7 @@ signal timeout
 #Maximum amount of planets in a level
 @export var max_planets = 30
 
+
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
 		release_constelator()
@@ -49,10 +50,12 @@ func _ready() -> void:
 @export var planets_parent : Node2D
 @export var planet_scale : float = 1
 @export var SFX_Unselect_Star : FmodEventEmitter2D
+@export var MainMusic : FmodEventEmitter2D
 
 #region planets generation
 func start_level() -> void :
 	create_constellation()
+	SystemeSon()
 	game_over = false
 
 ## Entrée : Rien |
@@ -183,7 +186,7 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	print("Temps écoulé au niveau : ", current_level)
 	timeout.emit()
-	$CameraPhysic/Camera2D/MUSIC.set_parameter("EndGame",1)
+	MainMusic.set_parameter("EndGame",1)
 
 func check_for_blackhole_sprite_change() -> void :
 	var sprites = [
@@ -206,22 +209,22 @@ func check_for_blackhole_sprite_change() -> void :
 
 func SystemeSon() :
 	if current_level<2 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.1)
+		MainMusic.set_parameter("Blackhole_Size",0.1)
 	elif current_level<4 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.2)
+		MainMusic.set_parameter("Blackhole_Size",0.2)
 	elif current_level<6 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.3)
+		MainMusic.set_parameter("Blackhole_Size",0.3)
 	elif current_level<8 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.4)
+		MainMusic.set_parameter("Blackhole_Size",0.4)
 	elif current_level<9 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.5)
+		MainMusic.set_parameter("Blackhole_Size",0.5)
 	elif current_level<10 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.6)
+		MainMusic.set_parameter("Blackhole_Size",0.6)
 	elif current_level<12 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.7)
+		MainMusic.set_parameter("Blackhole_Size",0.7)
 	elif current_level<13 :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.8)
+		MainMusic.set_parameter("Blackhole_Size",0.8)
 	elif current_level<15 : 
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.9)
+		MainMusic.set_parameter("Blackhole_Size",0.9)
 	else :
-		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",1)
+		MainMusic.set_parameter("Blackhole_Size",1)
