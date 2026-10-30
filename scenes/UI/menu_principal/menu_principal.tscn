@@ -35,6 +35,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_80s3h")
 
+[node name="SFX_Click" type="FmodEventEmitter2D" parent="." unique_id=895922091]
+event_name = "event:/SFX_Click"
+event_guid = "{75044093-d973-4337-a742-2b536fde68ca}"
+
+[node name="SFX_Hover" type="FmodEventEmitter2D" parent="." unique_id=1786772623]
+event_name = "event:/SFX_Hover"
+event_guid = "{ec2cf21a-7dcb-43cc-803b-3788f3ce9b88}"
+
 [node name="ColorRect" type="Sprite2D" parent="." unique_id=1554242575]
 position = Vector2(532, 324)
 texture = ExtResource("2_qcpdj")
