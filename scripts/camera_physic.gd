@@ -2,8 +2,13 @@ extends CharacterBody2D
 @export var BaseSPEED := 10.0
 var destination := Vector2.ZERO
 var mouse_real_position := Vector2.ZERO
-var black_hole_expanding := false
 @export var camera_attraction_toward_center := 8.0
+#Nécéssaire à l'animation d'agrandissement
+var black_hole_expanding := false
+@onready var Camera := $Camera2D
+var sample_point := 0.0
+@export var growth_curve : Curve
+@export var growth_speed := 1.0
 #Defini le centre et les limites du viewport dans l'espace de jeu.
 @onready var viewport_center: Vector2 = get_viewport().get_visible_rect().get_center()
 @onready var viewport_left_border := get_viewport().get_visible_rect().size.x / -2.0
@@ -11,6 +16,11 @@ var black_hole_expanding := false
 @onready var viewport_up_border := get_viewport().get_visible_rect().size.y / -2.0
 @onready var viewport_down_border := get_viewport().get_visible_rect().size.y / 2.0
 
+func growth_anim(time: float):
+	black_hole_expanding = true
+	await get_tree().create_timer(time).timeout
+	black_hole_expanding = false
+	Camera.zoom = Vector2(1.0, 1.0)
 
 func _physics_process(delta: float) -> void:
 	#Défini la posiition de la souris relative à l'espace de jeu
@@ -28,7 +38,10 @@ func _physics_process(delta: float) -> void:
 	# la caméra, en la renvoyant vers l'origine.
 	if black_hole_expanding :
 		destination = Vector2.ZERO
+		sample_point += (delta * growth_speed)
+		Camera.zoom.x = 1.0/growth_curve.sample(sample_point) ; Camera.zoom.y = 1.0/growth_curve.sample(sample_point)
 	else :
+		sample_point = 0.0
 		destination = (global_position + mouse_real_position) / camera_attraction_toward_center
 	#On déplace la caméra avec un lerp.
 	global_position = global_position.lerp(destination, BaseSPEED * delta)

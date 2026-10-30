@@ -13,16 +13,23 @@ var sample_point := 0.0
 @export var growth_curve : Curve
 @export var growth_speed := 1.0
 @onready var black_hole = $BlackHole
+@onready var CameraPhysic = $BlackHole/CameraPhysic
 var growing := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	growth_anim()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("PAUSE"):
 		on_param_button_pressed()
+
+func growth_anim():
+	growing = true
+	await CameraPhysic.growth_anim(8.0)
+	growing = false
+	black_hole.scale = Vector2(1.0, 1.0)
 
 func _physics_process(delta: float) -> void:
 	if growing :

@@ -30,7 +30,7 @@
 
 [sub_resource type="Curve" id="Curve_bt6kb"]
 _limits = [0.0, 2.5, 0.0, 10.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0, Vector2(5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.95), 0.0, 0.0, 0, 0, Vector2(5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [node name="Space" type="Node2D" unique_id=1970641133]
@@ -38,10 +38,10 @@ script = ExtResource("1_vu1g8")
 growth_curve = SubResource("Curve_bt6kb")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1853053392]
-offset_left = -752.0
-offset_top = -499.0
-offset_right = 747.0
-offset_bottom = 507.0
+offset_left = -4083.0
+offset_top = -3137.0
+offset_right = 4568.0
+offset_bottom = 3169.0
 color = Color(0, 0.03325892, 0.07530675, 1)
 
 [node name="ParralaxManager" type="Node2D" parent="." unique_id=1460532371]
@@ -75,18 +75,6 @@ bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Mast
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444755364]
 layer = 4
-
-[node name="Fond_trou_noir" type="TextureRect" parent="CanvasLayer" unique_id=1383605581]
-material = ExtResource("6_6scvu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("7_mxyie")
-stretch_mode = 5
 
 [node name="Menu_parametres" parent="CanvasLayer" unique_id=1037719077 instance=ExtResource("4_4c1q5")]
 visible = false
