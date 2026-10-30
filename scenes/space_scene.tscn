@@ -302,5 +302,6 @@ language = "fr_FR"
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1181101365]
 
 [connection signal="timeout" from="BlackHole" to="." method="_on_black_hole_timeout"]
+[connection signal="uwu" from="BlackHole" to="." method="_on_black_hole_uwu"]
 [connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]
 [connection signal="pressed" from="CanvasLayer/Game_over/Button" to="." method="_on_button_pressed"]

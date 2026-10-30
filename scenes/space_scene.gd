@@ -16,7 +16,7 @@ var sample_point := 0.0
 @onready var black_hole = $BlackHole
 @onready var Parralax = $ParralaxManager
 @onready var CameraPhysic = $BlackHole/CameraPhysic
-@onready var uwupaillettes = $"BlackHole/Sprite2 Black hole/GPUParticles2D"
+@onready var uwupaillettes = $BlackHole/GPUParticles2D
 @onready var bulle = $"BlackHole/Sprite2 Black hole/AnimationPlayer"
 var growing := false
 
@@ -82,3 +82,7 @@ func _on_black_hole_timeout(current_level : int) -> void:
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/menu_principal/menu_principal.tscn")
 	self.queue_free()
+
+
+func _on_black_hole_uwu() -> void:
+	uwupaillettes.emitting = true
