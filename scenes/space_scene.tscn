@@ -95,6 +95,7 @@ offset_right = 640.0
 offset_bottom = 361.5
 
 [node name="Game_over" type="TextureRect" parent="CanvasLayer" unique_id=717811820]
+visible = false
 material = ExtResource("6_6scvu")
 anchors_preset = 15
 anchor_right = 1.0
@@ -108,9 +109,8 @@ size_flags_vertical = 4
 stretch_mode = 5
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Game_over" unique_id=878393311]
-visible = false
 custom_minimum_size = Vector2(248, 0)
-custom_maximum_size = Vector2(248, 100)
+custom_maximum_size = Vector2(284, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
