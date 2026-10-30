@@ -164,6 +164,11 @@ layout_mode = 2
 visible = false
 layout_mode = 1
 
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=1024028361]
+event_name = "event:/Music_Menu_Start"
+event_guid = "{9eabc165-943e-44b3-bd3c-4610c6dc50ae}"
+autoplay = true
+
 [node name="MusiqueFond" type="AudioStreamPlayer" parent="." unique_id=848761638]
 autoplay = true
 bus = &"Music"
@@ -174,6 +179,12 @@ camera_attraction_toward_center = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="CameraPhysic" unique_id=1402372298]
 position = Vector2(640, 360)
+
+[node name="FmodListener2D" type="FmodListener2D" parent="CameraPhysic" unique_id=1616719071]
+is_locked = true
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="CameraPhysic" unique_id=409864624]
+bank_paths = ["res://FmodBank/Desktop/Master.strings.bank", "res://FmodBank/Desktop/Master.bank"]
 
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxSideButton/param_button" to="." method="_on_param_button_pressed"]
