@@ -37,6 +37,8 @@ var current_time = time_allowed
 signal timeout
 #Maximum amount of planets in a level
 @export var max_planets = 30
+#Player for death animation
+@onready var animation_death_player = $Node2D/AnimationDeath
 
 
 func _process(delta: float) -> void:
@@ -192,6 +194,7 @@ func release_constelator():
 func _on_timer_timeout() -> void:
 	game_over = true
 	timer.stop()
+	animation_death_player.play("AnimationDeath")
 	print("Temps écoulé au niveau : ", current_level)
 	timeout.emit()
 	MainMusic.set_parameter("EndGame",1)

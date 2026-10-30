@@ -83,14 +83,24 @@ alpha_curve = SubResource("CurveTexture_66d1w")
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
 growth_curve = SubResource("Curve_bt6kb")
+growth_speed = 2.0
 
-[node name="ColorRect" type="TextureRect" parent="." unique_id=436186456]
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=481459969]
+layer = -10
+
+[node name="ColorRect" type="TextureRect" parent="CanvasLayer2" unique_id=436186456]
+z_index = -10
 custom_minimum_size = Vector2(3840, 2160)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_ofi2h")
 stretch_mode = 1
 
@@ -102,6 +112,7 @@ BTextureList = Array[Texture]([ExtResource("16_bt6kb"), ExtResource("17_ofi2h"),
 CTextureList = Array[Texture]([ExtResource("20_2g33w"), ExtResource("21_muukt"), ExtResource("22_6md6r"), ExtResource("23_dp81o")])
 DTextureList = Array[Texture]([ExtResource("24_p4776"), ExtResource("25_kpxmv"), ExtResource("26_kkr1u"), ExtResource("27_lrnks")])
 OpacityCurve = SubResource("Curve_ofi2h")
+opacity_speed = 2.0
 
 [node name="BlackHole" parent="." unique_id=1995767824 node_paths=PackedStringArray("planets_parent") instance=ExtResource("2_jsx7o")]
 unique_name_in_owner = true
@@ -207,6 +218,8 @@ text = "Continuer"
 horizontal_alignment = 1
 vertical_alignment = 1
 language = "fr_FR"
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1181101365]
 
 [connection signal="timeout" from="BlackHole" to="." method="_on_black_hole_timeout"]
 [connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]

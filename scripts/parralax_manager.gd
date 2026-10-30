@@ -41,20 +41,26 @@ func growth_anim(time):
 			Child.dontModif = false
 		if Child.base_opacity <= 0.1 :
 			Child.queue_free()
+	if get_node("../BlackHole").current_level == 3 :
+		UsedList = 1
+	elif get_node("../BlackHole").current_level == 7 :
+		UsedList = 2
+	elif get_node("../BlackHole").current_level == 11 :
+		UsedList = 3
 
-	
 
 func _physics_process(delta: float) -> void:
 	if CameraIsMoving :
 		sample_point += (delta * opacity_speed)
 		for Child in get_children() :
+			if not Child.dontModif :
 				Child.modulate.a = Child.base_opacity - (OpacityCurve.sample(sample_point) * 0.25)
 	if sample_point >= 4.25 and not newLayerAdded :
 		newLayerAdded = true
 		LayerInstance = LayerScene.instantiate()
 		LayerInstance.Stars_Patern = TextureTab[UsedList][indiceTexture]
-		LayerInstance.scroll_scale = Vector2(1.2 - (OpacityCurve.sample(sample_point) * 0.2), 1.2 - (OpacityCurve.sample(sample_point) * 0.2))
-		LayerInstance.scale = Vector2(0.8, 0.8)
+		LayerInstance.scroll_scale = Vector2(1 + 0.2/scale.x, 1 + 0.2/scale.y)
+		LayerInstance.scale = Vector2(1/scale.x, 1/scale.y)
 		LayerInstance.modulate.a = 1.0
 		LayerInstance.dontModif = true
 		add_child(LayerInstance)
