@@ -5,7 +5,13 @@
 [ext_resource type="Script" uid="uid://dtekls8lecbh7" path="res://scripts/camera_physic.gd" id="4_fnnx3"]
 [ext_resource type="Texture2D" uid="uid://bw5r7y7pbcd48" path="res://assets/images/chara/anim/2.png" id="4_iwk21"]
 [ext_resource type="Texture2D" uid="uid://cxb7u5ttin0oj" path="res://assets/images/chara/anim/bas/bas 1.png" id="5_en8di"]
+[ext_resource type="Shader" uid="uid://bdbu1y4owfjc0" path="res://scenes/elements/Bubble/space_scene.gdshader" id="6_en8di"]
 [ext_resource type="PackedScene" uid="uid://ne8vljrbvf4w" path="res://scenes/elements/planets/planet.tscn" id="10_j73lu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxvao"]
+shader = ExtResource("6_en8di")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.0
 
 [sub_resource type="Animation" id="Animation_fnnx3"]
 resource_name = "Blackhole_spawn"
@@ -31,12 +37,62 @@ _data = {
 &"RESET": SubResource("Animation_4pxaw")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_582gr"]
+shader = ExtResource("6_en8di")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tegy0"]
+shader = ExtResource("6_en8di")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = -0.5
+
 [sub_resource type="Animation" id="Animation_iwk21"]
 resource_name = "AnimationDeath"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Corps:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 4, 4),
+"update": 0,
+"values": [SubResource("ShaderMaterial_bxvao"), SubResource("ShaderMaterial_582gr"), SubResource("ShaderMaterial_tegy0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 4, 4),
+"update": 0,
+"values": [SubResource("ShaderMaterial_bxvao"), SubResource("ShaderMaterial_582gr"), SubResource("ShaderMaterial_tegy0")]
+}
+
+[sub_resource type="Animation" id="Animation_en8di"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Corps:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_4pxaw")]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_en8di"]
 _data = {
-&"AnimationDeath": SubResource("Animation_iwk21")
+&"AnimationDeath": SubResource("Animation_iwk21"),
+&"RESET": SubResource("Animation_en8di")
 }
 
 [sub_resource type="Curve" id="Curve_bt6kb"]
@@ -58,7 +114,7 @@ event_name = "event:/SFX_Unselect_Star"
 event_guid = "{ff97faaa-4a10-4112-a04a-44fff835f78b}"
 
 [node name="Node2D" type="Node2D" parent="." unique_id=120019941]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(1e-05, 1e-05)
 
 [node name="Corps" type="Sprite2D" parent="Node2D" unique_id=1926116181]
 material = ExtResource("3_4pxaw")
@@ -67,7 +123,7 @@ scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_en8di")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1402957950]
-material = ExtResource("3_4pxaw")
+material = SubResource("ShaderMaterial_bxvao")
 position = Vector2(4, -119)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_iwk21")
