@@ -15,6 +15,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2rsun")
 
+[node name="SFX_Click" type="FmodEventEmitter2D" parent="." unique_id=1917238512]
+event_guid = "{75044093-d973-4337-a742-2b536fde68ca}"
+
+[node name="SFX_Hover" type="FmodEventEmitter2D" parent="." unique_id=242558011]
+event_guid = "{ec2cf21a-7dcb-43cc-803b-3788f3ce9b88}"
+
 [node name="TabContainer" type="MarginContainer" parent="." unique_id=1147720864]
 layout_mode = 1
 anchors_preset = 15
@@ -78,4 +84,5 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 15
 
+[connection signal="mouse_entered" from="TabContainer/VBoxContainer/exit_button" to="." method="on_button_hover"]
 [connection signal="pressed" from="TabContainer/VBoxContainer/exit_button" to="." method="_on_exit_button_pressed"]
