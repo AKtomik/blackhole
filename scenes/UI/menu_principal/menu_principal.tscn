@@ -36,9 +36,11 @@ grow_vertical = 2
 script = ExtResource("1_80s3h")
 
 [node name="SFX_Click" type="FmodEventEmitter2D" parent="." unique_id=895922091]
+event_name = "event:/SFX_Click"
 event_guid = "{75044093-d973-4337-a742-2b536fde68ca}"
 
 [node name="SFX_Hover" type="FmodEventEmitter2D" parent="." unique_id=1786772623]
+event_name = "event:/SFX_Hover"
 event_guid = "{ec2cf21a-7dcb-43cc-803b-3788f3ce9b88}"
 
 [node name="ColorRect" type="Sprite2D" parent="." unique_id=1554242575]
@@ -166,6 +168,7 @@ visible = false
 layout_mode = 1
 
 [node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=1024028361]
+event_name = "event:/Music_Menu_Start"
 event_guid = "{9eabc165-943e-44b3-bd3c-4610c6dc50ae}"
 autoplay = true
 
