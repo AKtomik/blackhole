@@ -223,3 +223,25 @@ func check_for_blackhole_sprite_change() -> void :
 	print(current_time,"-",timer.time_left)
 
 #endregion
+
+func SystemeSon() :
+	if current_level<2 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.1)
+	elif current_level<4 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.2)
+	elif current_level<6 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.3)
+	elif current_level<8 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.4)
+	elif current_level<9 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.5)
+	elif current_level<10 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.6)
+	elif current_level<12 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.7)
+	elif current_level<13 :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.8)
+	elif current_level<15 : 
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",0.9)
+	else :
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",1)
