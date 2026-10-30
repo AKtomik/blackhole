@@ -33,6 +33,11 @@ _limits = [0.0, 2.5, 0.0, 10.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.95), 0.0, 0.0, 0, 0, Vector2(5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="Curve" id="Curve_ofi2h"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(6.5, 1), 0.0, 0.0, 0, 0, Vector2(10, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
 growth_curve = SubResource("Curve_bt6kb")
@@ -51,6 +56,7 @@ ATextureList = Array[Texture]([ExtResource("12_rbo46"), ExtResource("13_cbu5l"),
 BTextureList = Array[Texture]([ExtResource("16_bt6kb"), ExtResource("17_ofi2h"), ExtResource("18_xyplr"), ExtResource("19_223mp")])
 CTextureList = Array[Texture]([ExtResource("20_2g33w"), ExtResource("21_muukt"), ExtResource("22_6md6r"), ExtResource("23_dp81o")])
 DTextureList = Array[Texture]([ExtResource("24_p4776"), ExtResource("25_kpxmv"), ExtResource("26_kkr1u"), ExtResource("27_lrnks")])
+OpacityCurve = SubResource("Curve_ofi2h")
 
 [node name="BlackHole" parent="." unique_id=1995767824 node_paths=PackedStringArray("planets_parent") instance=ExtResource("2_jsx7o")]
 unique_name_in_owner = true
