@@ -75,7 +75,6 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_mxyie")
 
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
-visible = false
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
