@@ -90,6 +90,7 @@ offset_top = -16.0
 offset_right = 16.0
 offset_bottom = 16.0
 scale = Vector2(1.0015836, 1)
+mouse_filter = 1
 
 [node name="SelectedCircleSprite" type="Sprite2D" parent="PlanetVisual" unique_id=2091914226]
 scale = Vector2(-0.08117892, -0.08117892)
