@@ -22,9 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://bp1624p2rmy5o" path="res://assets/images/UI/trou noir.png" id="22_ofi2h"]
 [ext_resource type="Texture2D" uid="uid://bph2i222tqyep" path="res://assets/images/BG/Etoiles/C_04.png" id="23_dp81o"]
 [ext_resource type="Texture2D" uid="uid://c0b5sv4yaultb" path="res://assets/images/BG/Etoiles/D_01.png" id="24_p4776"]
-[ext_resource type="Texture2D" uid="uid://cm2pwn1cy02sd" path="res://assets/images/UI/Stars/star 2.png" id="24_xyplr"]
 [ext_resource type="Texture2D" uid="uid://bpq7sbt4aogqu" path="res://assets/images/UI/Buttons/bouton.png" id="25_bt6kb"]
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="25_kpxmv"]
+[ext_resource type="Texture2D" uid="uid://ugkm8ckypixm" path="res://assets/images/UI/Stars/star 1.png" id="25_xyplr"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="26_kkr1u"]
 [ext_resource type="Texture2D" uid="uid://twilvk3sb7yt" path="res://assets/images/UI/Buttons/bouton survolé copie.png" id="26_ofi2h"]
 [ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="27_bt6kb"]
@@ -41,18 +41,20 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(6
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_e78pb"]
-_data = [Vector2(0.041198492, 1), 0.0, 0.0, 0, 0, Vector2(0.56554306, 0.23076922), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.041198492, 1), 0.0, 0.0, 0, 0, Vector2(0.56554306, 0.23076922), 0.0, 0.0, 0, 0, Vector2(0.7819549, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_66d1w"]
 curve = SubResource("Curve_e78pb")
 
-[sub_resource type="Curve" id="Curve_223mp"]
-_limits = [-200.0, 200.0, 0.0, 1.0]
-_data = [Vector2(0.022471905, -89.230774), 0.0, 0.0, 0, 0, Vector2(0.5805243, -70.769226), 0.0, 0.0, 0, 0, Vector2(1, -196.92307), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="CurveTexture" id="CurveTexture_3j575"]
+
+[sub_resource type="Curve" id="Curve_223mp"]
+_limits = [-10.0, 1.0, 0.0, 0.71052635]
+_data = [Vector2(0, 0), 0.0, -1.5812668, 0, 0, Vector2(0.10684607, -0.015384436), 0.7919381, 0.7919381, 0, 0, Vector2(0.19766521, 0.40769267), 5.261123, 5.261123, 0, 0, Vector2(0.3151959, 1), -1.5084531, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xyplr"]
 curve = SubResource("Curve_223mp")
 
 [sub_resource type="Curve" id="Curve_2g33w"]
@@ -65,18 +67,23 @@ curve = SubResource("Curve_2g33w")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lnuoc"]
 lifetime_randomness = 1.0
 particle_flag_disable_z = true
-angle_min = -368.4
-angle_max = -114.59999
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1000.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 direction = Vector3(1.98, -1.47, 0)
 spread = 180.0
-initial_velocity_min = 467.21
-initial_velocity_max = 1000.0
-angular_velocity_min = 17.699984
-angular_velocity_max = 64.91998
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
 gravity = Vector3(0, 0, 0)
-linear_accel_min = 7.3799977
-linear_accel_max = 13.929997
 linear_accel_curve = SubResource("CurveTexture_3j575")
+radial_accel_min = -600.0
+radial_accel_max = -600.0
+radial_accel_curve = SubResource("CurveTexture_xyplr")
 scale_curve = SubResource("CurveTexture_kamhu")
 alpha_curve = SubResource("CurveTexture_66d1w")
 
@@ -120,18 +127,24 @@ material = ExtResource("6_6scvu")
 position = Vector2(0, 51)
 texture = ExtResource("22_ofi2h")
 
+[node name="Sprite2D bubble" type="Sprite2D" parent="BlackHole/Sprite2 Black hole" unique_id=1379783484]
+material = ExtResource("6_6scvu")
+position = Vector2(0, -50.999996)
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("7_mxyie")
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="BlackHole/Sprite2 Black hole" unique_id=1126501776]
+position = Vector2(0, -50)
 scale = Vector2(0.46, 0.46)
 emitting = false
-texture = ExtResource("24_xyplr")
+amount = 10
+texture = ExtResource("25_xyplr")
+lifetime = 1.8
+one_shot = true
+speed_scale = 0.81
+explosiveness = 1.0
 randomness = 0.03
 process_material = SubResource("ParticleProcessMaterial_lnuoc")
-
-[node name="Sprite2D bubble" type="Sprite2D" parent="BlackHole/Sprite2 Black hole" unique_id=1379783484]
-visible = false
-material = ExtResource("6_6scvu")
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("7_mxyie")
 
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
 
