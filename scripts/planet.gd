@@ -44,7 +44,7 @@ func _process(_delta: float) -> void:
 		if (link_ray_node.enabled && link_ray_node.is_colliding()):
 			var collider = link_ray_node.get_collider()
 			print("ray colliding with ", collider)
-			if (collider is Planet):
+			if (collider is Planet && !collider.is_selected):
 				print("collider is a planet!")
 				collider.planet_hovered.emit(collider)
 
@@ -83,6 +83,7 @@ func join_constelation(planet_number: int):
 	is_clickable = false
 	selected_sprite_node.visible = true
 	link_line_node.visible = true
+	shape_node.disabled = true
 	if (do_hover_emit_with_ray): link_ray_node.enabled = true
 	line_to(position)
 	$SFX_Select_Star.set_parameter("NumSelectedStars",planet_number)
@@ -99,6 +100,7 @@ func cancel_constelation():
 	selected_sprite_node.visible = false
 	link_line_node.visible = false
 	link_ray_node.enabled = false
+	shape_node.disabled = false
 
 func finish_constelation():
 	queue_free()
@@ -112,7 +114,7 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 
 func _on_mouse_entered() -> void:
-	if do_hover_emit_with_mouse || !(Input.is_action_pressed("left_click") && is_clickable): return
+	if !do_hover_emit_with_mouse || !(Input.is_action_pressed("left_click") && is_clickable): return
 	print("mouse join planet", self)
 	planet_hovered.emit(self)
 	
