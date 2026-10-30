@@ -35,6 +35,8 @@ var current_body_sprite : int = 0
 var current_time = time_allowed
 #Signal send when the timer runs out and the player looses
 signal timeout (level_number : int)
+#signal pour afficher des paillettes
+signal uwu
 #Maximum amount of planets in a level
 @export var max_planets = 30
 #Player for death animation
@@ -219,6 +221,8 @@ func check_for_blackhole_sprite_change() -> void :
 		"res://assets/images/chara/anim/bas/bas 3.png",
 		"res://assets/images/chara/anim/bas/bas 4.png",
 	]
+	if timer.time_left < 4 and !game_over and planets_amount > 3 :
+		uwu.emit()
 	if int(timer.time_left/time_allowed*10) != current_head_sprite:
 		current_head_sprite = int(timer.time_left/time_allowed*10)
 		blackhole_head_sprite.texture = load(sprites_head[current_head_sprite])

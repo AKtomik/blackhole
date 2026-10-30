@@ -40,6 +40,42 @@ _limits = [0.0, 1.0, 0.0, 10.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(6.5, 1), 0.0, 0.0, 0, 0, Vector2(10, 1), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="Animation" id="Animation_xyplr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_223mp"]
+resource_name = "bulle_death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2g33w"]
+_data = {
+&"RESET": SubResource("Animation_xyplr"),
+&"bulle_death": SubResource("Animation_223mp")
+}
+
 [sub_resource type="Curve" id="Curve_e78pb"]
 _data = [Vector2(0.041198492, 1), 0.0, 0.0, 0, 0, Vector2(0.56554306, 0.23076922), 0.0, 0.0, 0, 0, Vector2(0.7819549, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -47,7 +83,13 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_66d1w"]
 curve = SubResource("Curve_e78pb")
 
+[sub_resource type="Curve" id="Curve_xyplr"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CurveTexture" id="CurveTexture_3j575"]
+curve = SubResource("Curve_xyplr")
 
 [sub_resource type="Curve" id="Curve_223mp"]
 _limits = [-10.0, 1.0, 0.0, 0.71052635]
@@ -146,8 +188,11 @@ position = Vector2(0, -50.999996)
 scale = Vector2(0.69, 0.69)
 texture = ExtResource("7_mxyie")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="BlackHole/Sprite2 Black hole" unique_id=1126501776]
-position = Vector2(0, -50)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlackHole/Sprite2 Black hole" unique_id=1323132430]
+libraries/ = SubResource("AnimationLibrary_2g33w")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BlackHole" unique_id=1126501776]
+position = Vector2(0, 1)
 scale = Vector2(0.46, 0.46)
 emitting = false
 amount = 10
@@ -257,5 +302,6 @@ language = "fr_FR"
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1181101365]
 
 [connection signal="timeout" from="BlackHole" to="." method="_on_black_hole_timeout"]
+[connection signal="uwu" from="BlackHole" to="." method="_on_black_hole_uwu"]
 [connection signal="exit_parametres" from="CanvasLayer/Menu_parametres" to="." method="on_exit_parametres"]
 [connection signal="pressed" from="CanvasLayer/Game_over/Button" to="." method="_on_button_pressed"]
