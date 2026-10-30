@@ -45,6 +45,7 @@ func on_exit_parametres() -> void :
 ## Sortie : Rien |
 ## Action : Affiche la scène principale (et arrète les effets du menu principal |
 func _on_play_button_pressed():
+	
 	get_tree().change_scene_to_file("res://scenes/space_scene.tscn")
 	musique_fond.playing = false
 	menu_principal.visible = false
