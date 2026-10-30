@@ -223,8 +223,6 @@ func check_for_blackhole_sprite_change() -> void :
 		current_time = timer.time_left
 		current_body_sprite = (current_body_sprite+1) % 4
 		blackhole_body_sprite.texture = load(sprites_body[current_body_sprite])
-	
-	print(current_time,"-",timer.time_left)
 
 func paused(val : bool):
 	timer.paused = val

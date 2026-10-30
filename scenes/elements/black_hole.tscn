@@ -36,13 +36,14 @@ _limits = [1.0, 2.5, 0.0, 10.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.0, 0, 0, Vector2(6.5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="BlackHole" type="Node2D" unique_id=1995767824 node_paths=PackedStringArray("blackhole_head_sprite", "blackhole_body_sprite", "camera", "SFX_Unselect_Star")]
+[node name="BlackHole" type="Node2D" unique_id=1995767824 node_paths=PackedStringArray("blackhole_head_sprite", "blackhole_body_sprite", "camera", "SFX_Unselect_Star", "MainMusic")]
 script = ExtResource("1_46ff3")
 blackhole_head_sprite = NodePath("Node2D/Sprite2D")
 blackhole_body_sprite = NodePath("Node2D/Corps")
 planets_scenes = Array[PackedScene]([ExtResource("10_j73lu")])
 camera = NodePath("CameraPhysic/Camera2D")
 SFX_Unselect_Star = NodePath("SFX_Unselect_Star")
+MainMusic = NodePath("CameraPhysic/Camera2D/MUSIC")
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=1549146915]
 event_name = "event:/SFX_Unselect_Star"
