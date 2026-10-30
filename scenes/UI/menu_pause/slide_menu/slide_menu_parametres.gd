@@ -8,12 +8,10 @@ extends Control
 # Permet de choisir quel bus ce slider va changer
 @export_enum("Master_Level", "Music_Level", "SFX_Level") var bus_name : String
 
-var bus_index : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	h_slider.value_changed.connect(on_value_changed)
-	connect_bus_index()
 	set_nom_audio()
 	set_slider_value()
 	
@@ -41,7 +39,6 @@ func set_valeur_audio () -> void :
 ## Sortie : Rien |
 ## Action : Change le volume de l'audio dans le bus audio |
 func on_value_changed(value : float) -> void : 
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 	FmodServer.set_global_parameter_by_name(bus_name, value*100	)
 	set_valeur_audio()
 
@@ -52,11 +49,6 @@ func set_slider_value () -> void:
 	h_slider.value = FmodServer.get_global_parameter_by_name(bus_name)/100
 	set_valeur_audio()
 
-## Entrée : Rien |
-## Sortie : Rien |
-## Action : Récupère l'index du bus en fonction du paramètre d'entrée |
-func connect_bus_index () -> void : 
-	bus_index = AudioServer.get_bus_index(bus_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
