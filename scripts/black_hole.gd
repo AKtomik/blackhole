@@ -251,7 +251,9 @@ func SystemeSon() :
 		MainMusic.set_parameter("Blackhole_Size",0.9)
 	else :
 		MainMusic.set_parameter("Blackhole_Size",1)
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",1)
 
+#region Animation
 
 func Eat_Animation():
 	growth_anim()
