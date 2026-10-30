@@ -117,8 +117,3 @@ func _on_mouse_entered() -> void:
 	if !do_hover_emit_with_mouse || !(Input.is_action_pressed("left_click") && is_clickable): return
 	print("mouse join planet", self)
 	planet_hovered.emit(self)
-	
-
-func _on_mouse_exited() -> void:
-	print("mouse exit on planet ", self)
-	
