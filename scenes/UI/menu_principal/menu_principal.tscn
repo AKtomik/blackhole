@@ -2,13 +2,8 @@
 
 [ext_resource type="Script" uid="uid://d0nyy5nelvkkd" path="res://scenes/UI/menu_principal/menu_principal.gd" id="1_80s3h"]
 [ext_resource type="Script" uid="uid://mahecby4gi5a" path="res://scripts/parralax_manager.gd" id="2_a1ow7"]
-[ext_resource type="Texture2D" uid="uid://ckj5oqxrc2bgd" path="res://assets/images/menu_jeu_button.svg" id="2_h33ay"]
-[ext_resource type="Texture2D" uid="uid://b4elxs7cenqeq" path="res://assets/images/menu_jeu_button_survole.svg" id="3_kbxwo"]
 [ext_resource type="PackedScene" uid="uid://cjgexcny30lkg" path="res://scenes/elements/parralax_layer.tscn" id="3_qcpdj"]
 [ext_resource type="Texture2D" uid="uid://cigkr0rsirh3g" path="res://assets/images/BG/Etoiles/A_01.png" id="4_7wbet"]
-[ext_resource type="FontFile" uid="uid://c2mb6de2hcgpy" path="res://assets/fonts/OpenDyslexic-Regular.otf" id="4_at66h"]
-[ext_resource type="Texture2D" uid="uid://8gnaloa0vljm" path="res://assets/images/menu_jeu_tiny_button.svg" id="4_x57wl"]
-[ext_resource type="Texture2D" uid="uid://dgkers5n24soj" path="res://assets/images/menu_jeu_tiny_button_survole.svg" id="5_t70e0"]
 [ext_resource type="Texture2D" uid="uid://dsa6pso4r5bxj" path="res://assets/images/BG/Etoiles/A_02.png" id="5_yrxmx"]
 [ext_resource type="Texture2D" uid="uid://dykxhojrsu0nx" path="res://assets/images/BG/Etoiles/A_03.png" id="6_150aa"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="6_cvvk7"]
@@ -25,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="17_r7gk5"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="18_rldd6"]
 [ext_resource type="Texture2D" uid="uid://dr6sv1501qoyu" path="res://assets/images/BG/Etoiles/D_04.png" id="19_ibtfj"]
+[ext_resource type="Texture2D" uid="uid://bpq7sbt4aogqu" path="res://assets/images/UI/Buttons/bouton.png" id="20_cv6gj"]
+[ext_resource type="Texture2D" uid="uid://twilvk3sb7yt" path="res://assets/images/UI/Buttons/bouton survolé copie.png" id="21_a1ow7"]
+[ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="22_qcpdj"]
 [ext_resource type="Script" uid="uid://dtekls8lecbh7" path="res://scripts/camera_physic.gd" id="26_qcpdj"]
 
 [node name="Menu_principal_affichage" type="Control" unique_id=843324627]
@@ -85,20 +83,27 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="play_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxMainButton" unique_id=549709171]
-custom_minimum_size = Vector2(248, 0)
+custom_maximum_size = Vector2(284, 100)
 layout_mode = 2
-texture_normal = ExtResource("2_h33ay")
-texture_pressed = ExtResource("3_kbxwo")
-texture_hover = ExtResource("3_kbxwo")
+texture_normal = ExtResource("20_cv6gj")
+texture_pressed = ExtResource("21_a1ow7")
+texture_hover = ExtResource("21_a1ow7")
 stretch_mode = 0
 
 [node name="play_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxMainButton/play_button" unique_id=1322282218]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -64.0
 offset_right = 256.0
-offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("4_at66h")
-theme_override_font_sizes/font_size = 32
+offset_bottom = 64.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("22_qcpdj")
+theme_override_font_sizes/font_size = 40
 text = "Jouer"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -110,61 +115,54 @@ self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VSeparator2" type="VSeparator" parent="Menu_principal/HBoxContainer" unique_id=2116130754]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
+[node name="param_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxMainButton" unique_id=880730463]
+custom_maximum_size = Vector2(213, 75)
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxSideButton" type="VBoxContainer" parent="Menu_principal/HBoxContainer" unique_id=197073778]
-layout_mode = 2
-theme_override_constants/separation = -34
-
-[node name="HSeparator" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxSideButton" unique_id=2134463831]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 355
-
-[node name="param_button" type="TextureButton" parent="Menu_principal/HBoxContainer/VBoxSideButton" unique_id=880730463]
-custom_minimum_size = Vector2(200, 150)
-layout_mode = 2
-texture_normal = ExtResource("4_x57wl")
-texture_pressed = ExtResource("5_t70e0")
-texture_hover = ExtResource("5_t70e0")
+texture_normal = ExtResource("20_cv6gj")
+texture_pressed = ExtResource("21_a1ow7")
+texture_hover = ExtResource("21_a1ow7")
 stretch_mode = 0
 
-[node name="param_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxSideButton/param_button" unique_id=950879401]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 22.0
-offset_top = 39.0
-offset_right = 178.0
-offset_bottom = 103.0
-theme_override_fonts/font = ExtResource("4_at66h")
-theme_override_font_sizes/font_size = 19
+[node name="param_label" type="Label" parent="Menu_principal/HBoxContainer/VBoxMainButton/param_button" unique_id=950879401]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -32.0
+offset_right = 78.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("22_qcpdj")
+theme_override_font_sizes/font_size = 29
 text = "Paramètres"
 horizontal_alignment = 1
 vertical_alignment = 1
 language = "fr_FR"
 
-[node name="HSeparator2" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxSideButton" unique_id=207675628]
+[node name="HSeparator3" type="HSeparator" parent="Menu_principal/HBoxContainer/VBoxMainButton" unique_id=207675628]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 29
 
-[node name="VSeparator3" type="VSeparator" parent="Menu_principal/HBoxContainer" unique_id=1914137762]
+[node name="VSeparator2" type="VSeparator" parent="Menu_principal/HBoxContainer" unique_id=2003222599]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -200
 
 [node name="Menu_parametres" parent="." unique_id=1805913762 instance=ExtResource("6_cvvk7")]
 visible = false
 layout_mode = 1
 
-[node name="Music_Start_Menu" type="FmodEventEmitter2D" parent="." unique_id=1024028361]
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="." unique_id=1024028361]
 event_name = "event:/Music_Menu_Start"
 event_guid = "{9eabc165-943e-44b3-bd3c-4610c6dc50ae}"
 autoplay = true
@@ -187,5 +185,5 @@ is_locked = true
 bank_paths = ["res://FmodBank/Desktop/Master.strings.bank", "res://FmodBank/Desktop/Master.bank"]
 
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxSideButton/param_button" to="." method="_on_param_button_pressed"]
+[connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/param_button" to="." method="_on_param_button_pressed"]
 [connection signal="finished" from="MusiqueFond" to="." method="_on_musique_fond_finished"]

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dah5m6qsf1fdr"]
 
 [ext_resource type="Script" uid="uid://cuh87pj83e77l" path="res://scenes/UI/menu_pause/menu_parametres.gd" id="1_q83rq"]
+[ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="2_md64l"]
 
 [node name="slide_menu_parametres" type="Control" unique_id=165978337]
 layout_mode = 3
@@ -32,6 +33,7 @@ size_flags_horizontal = 3
 [node name="Nom_Audio" type="Label" parent="HBoxContainer" unique_id=1018608512]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_md64l")
 theme_override_font_sizes/font_size = 32
 text = "TEXTE_PAR_DEFAUT
 "
@@ -56,6 +58,7 @@ layout_mode = 2
 [node name="Valeur_Audio" type="Label" parent="HBoxContainer" unique_id=774174314]
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_md64l")
 theme_override_font_sizes/font_size = 32
 text = "100 %
 "

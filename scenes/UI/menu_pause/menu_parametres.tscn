@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cuh87pj83e77l" path="res://scenes/UI/menu_pause/menu_parametres.gd" id="1_2rsun"]
 [ext_resource type="PackedScene" uid="uid://d0ulsovtj84go" path="res://scenes/UI/menu_pause/tab_parametres.tscn" id="2_hg7gg"]
-[ext_resource type="Texture2D" uid="uid://8gnaloa0vljm" path="res://assets/images/menu_jeu_tiny_button.svg" id="3_28efj"]
-[ext_resource type="Texture2D" uid="uid://dgkers5n24soj" path="res://assets/images/menu_jeu_tiny_button_survole.svg" id="4_fo4ob"]
+[ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="2_u4w4w"]
+[ext_resource type="Texture2D" uid="uid://bpq7sbt4aogqu" path="res://assets/images/UI/Buttons/bouton.png" id="4_u4w4w"]
+[ext_resource type="Texture2D" uid="uid://twilvk3sb7yt" path="res://assets/images/UI/Buttons/bouton survolé copie.png" id="5_d16fd"]
 
 [node name="Menu_parametres" type="Control" unique_id=1037719077]
 layout_mode = 3
@@ -30,6 +31,8 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="TabContainer/VBoxContainer" unique_id=15804178]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_constants/separation = 15
 
@@ -37,6 +40,7 @@ theme_override_constants/separation = 15
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_u4w4w")
 theme_override_font_sizes/font_size = 40
 text = "Options"
 horizontal_alignment = 1
@@ -48,23 +52,23 @@ size_flags_vertical = 3
 
 [node name="exit_button" type="TextureButton" parent="TabContainer/VBoxContainer" unique_id=499272613]
 custom_minimum_size = Vector2(200, 150)
+custom_maximum_size = Vector2(213, 75)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-texture_normal = ExtResource("3_28efj")
-texture_pressed = ExtResource("4_fo4ob")
-texture_hover = ExtResource("4_fo4ob")
-texture_focused = ExtResource("4_fo4ob")
+texture_normal = ExtResource("4_u4w4w")
+texture_pressed = ExtResource("5_d16fd")
+texture_hover = ExtResource("5_d16fd")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="TabContainer/VBoxContainer/exit_button" unique_id=2060514815]
-modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 19.0
-offset_top = 37.0
-offset_right = 179.0
-offset_bottom = 101.0
+offset_left = 18.0
+offset_top = 8.0
+offset_right = 178.0
+offset_bottom = 72.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_u4w4w")
 theme_override_font_sizes/font_size = 32
 text = "Retour"
 horizontal_alignment = 1

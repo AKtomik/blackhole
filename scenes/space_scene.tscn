@@ -4,10 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dd65b6ik5uaoi" path="res://scenes/elements/black_hole.tscn" id="2_jsx7o"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="4_4c1q5"]
 [ext_resource type="Material" uid="uid://rx8wbuy4rxvs" path="res://assets/Shaders/shockwave_bubble_shader.tres" id="6_6scvu"]
-[ext_resource type="Texture2D" uid="uid://ckj5oqxrc2bgd" path="res://assets/images/menu_jeu_button.svg" id="7_fwyvl"]
 [ext_resource type="Texture2D" uid="uid://dxw2mr6g26kyb" path="res://assets/images/UI/bulle black hole.png" id="7_mxyie"]
-[ext_resource type="Texture2D" uid="uid://b4elxs7cenqeq" path="res://assets/images/menu_jeu_button_survole.svg" id="8_i2e4q"]
-[ext_resource type="FontFile" uid="uid://c2mb6de2hcgpy" path="res://assets/fonts/OpenDyslexic-Regular.otf" id="9_ntytb"]
 [ext_resource type="Script" uid="uid://mahecby4gi5a" path="res://scripts/parralax_manager.gd" id="10_i2e4q"]
 [ext_resource type="PackedScene" uid="uid://cjgexcny30lkg" path="res://scenes/elements/parralax_layer.tscn" id="11_bl5p1"]
 [ext_resource type="Texture2D" uid="uid://cigkr0rsirh3g" path="res://assets/images/BG/Etoiles/A_01.png" id="12_rbo46"]
@@ -24,8 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://bp1624p2rmy5o" path="res://assets/images/UI/trou noir.png" id="22_ofi2h"]
 [ext_resource type="Texture2D" uid="uid://bph2i222tqyep" path="res://assets/images/BG/Etoiles/C_04.png" id="23_dp81o"]
 [ext_resource type="Texture2D" uid="uid://c0b5sv4yaultb" path="res://assets/images/BG/Etoiles/D_01.png" id="24_p4776"]
+[ext_resource type="Texture2D" uid="uid://bpq7sbt4aogqu" path="res://assets/images/UI/Buttons/bouton.png" id="25_bt6kb"]
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="25_kpxmv"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="26_kkr1u"]
+[ext_resource type="Texture2D" uid="uid://twilvk3sb7yt" path="res://assets/images/UI/Buttons/bouton survolé copie.png" id="26_ofi2h"]
+[ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="27_bt6kb"]
 [ext_resource type="Texture2D" uid="uid://dr6sv1501qoyu" path="res://assets/images/BG/Etoiles/D_04.png" id="27_lrnks"]
 
 [sub_resource type="Curve" id="Curve_bt6kb"]
@@ -110,6 +110,7 @@ stretch_mode = 5
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Game_over" unique_id=878393311]
 custom_minimum_size = Vector2(248, 0)
+custom_maximum_size = Vector2(284, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,13 +123,12 @@ offset_right = 152.5
 offset_bottom = 84.999985
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("7_fwyvl")
-texture_pressed = ExtResource("8_i2e4q")
-texture_hover = ExtResource("8_i2e4q")
+texture_normal = ExtResource("25_bt6kb")
+texture_pressed = ExtResource("26_ofi2h")
+texture_hover = ExtResource("26_ofi2h")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="CanvasLayer/Game_over/Button" unique_id=418126545]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -141,7 +141,8 @@ offset_right = 128.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("9_ntytb")
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("27_bt6kb")
 theme_override_font_sizes/font_size = 32
 text = "Continuer"
 horizontal_alignment = 1
