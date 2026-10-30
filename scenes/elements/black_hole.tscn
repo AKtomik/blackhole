@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://dd65b6ik5uaoi"]
 
 [ext_resource type="Script" uid="uid://bgdjpsxbr0t0x" path="res://scripts/black_hole.gd" id="1_46ff3"]
+[ext_resource type="Material" uid="uid://rx8wbuy4rxvs" path="res://assets/Shaders/shockwave_bubble_shader.tres" id="3_4pxaw"]
 [ext_resource type="Script" uid="uid://dtekls8lecbh7" path="res://scripts/camera_physic.gd" id="4_fnnx3"]
+[ext_resource type="Texture2D" uid="uid://bw5r7y7pbcd48" path="res://assets/images/chara/anim/2.png" id="4_iwk21"]
+[ext_resource type="Texture2D" uid="uid://cxb7u5ttin0oj" path="res://assets/images/chara/anim/bas/bas 1.png" id="5_en8di"]
 [ext_resource type="PackedScene" uid="uid://ne8vljrbvf4w" path="res://scenes/elements/planets/planet.tscn" id="10_j73lu"]
-[ext_resource type="Texture2D" uid="uid://cla1l1llx0yom" path="res://assets/images/chara/chara v1.png" id="11_0bvok"]
 
 [sub_resource type="Animation" id="Animation_fnnx3"]
 resource_name = "Blackhole_spawn"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("Node2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -22,18 +24,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4pxaw"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iwk21"]
 _data = {
@@ -46,24 +36,40 @@ _limits = [1.0, 2.5, 0.0, 10.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.0, 0, 0, Vector2(6.5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[node name="BlackHole" type="Node2D" unique_id=1995767824 node_paths=PackedStringArray("camera")]
+[node name="BlackHole" type="Node2D" unique_id=1995767824 node_paths=PackedStringArray("blackhole_head_sprite", "blackhole_body_sprite", "camera", "SFX_Unselect_Star", "MainMusic")]
 script = ExtResource("1_46ff3")
+blackhole_head_sprite = NodePath("Node2D/Sprite2D")
+blackhole_body_sprite = NodePath("Node2D/Corps")
 planets_scenes = Array[PackedScene]([ExtResource("10_j73lu")])
 camera = NodePath("CameraPhysic/Camera2D")
+SFX_Unselect_Star = NodePath("SFX_Unselect_Star")
+MainMusic = NodePath("CameraPhysic/Camera2D/MUSIC")
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=1549146915]
 event_name = "event:/SFX_Unselect_Star"
 event_guid = "{ff97faaa-4a10-4112-a04a-44fff835f78b}"
-auto_release = true
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1402957950]
+[node name="Node2D" type="Node2D" parent="." unique_id=120019941]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("11_0bvok")
 
-[node name="AnimationSpawn" type="AnimationPlayer" parent="Sprite2D" unique_id=1929392230]
+[node name="Corps" type="Sprite2D" parent="Node2D" unique_id=1926116181]
+position = Vector2(-6, 86)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_en8di")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1402957950]
+material = ExtResource("3_4pxaw")
+position = Vector2(4, -119)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_iwk21")
+
+[node name="AnimationSpawn" type="AnimationPlayer" parent="Node2D" unique_id=1929392230]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_iwk21")
 autoplay = &"Blackhole_spawn"
+
+[node name="AnimationDeath" type="AnimationPlayer" parent="Node2D" unique_id=145354886]
+root_node = NodePath("../Sprite2D")
 
 [node name="CameraPhysic" type="CharacterBody2D" parent="." unique_id=1510526725]
 script = ExtResource("4_fnnx3")
@@ -73,7 +79,7 @@ growth_curve = SubResource("Curve_bt6kb")
 [node name="Camera2D" type="Camera2D" parent="CameraPhysic" unique_id=716480409]
 
 [node name="MUSIC" type="FmodEventEmitter2D" parent="CameraPhysic/Camera2D" unique_id=198301037]
-event_name = "event:/MUSIC"
+event_name = "event:/Music"
 event_guid = "{6add997a-5166-47ea-a859-7ad7e5be7b8a}"
 autoplay = true
 fmod_parameters/Blackhole_Size/id = -8254653874567266056

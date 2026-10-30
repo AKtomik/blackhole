@@ -15,10 +15,14 @@ var constelation_second_distance_check : bool = false
 var current_level : int = 0
 #If the player has lost yet or not
 var game_over = false
-#Current sprite displayed from the sprites given
-var current_sprite : int = 11
-#Node of the sprite of the blackhole
-@onready var blackhole_sprite = $Sprite2D
+#Current head sprite displayed from the sprites given
+var current_head_sprite : int = 11
+#Current body sprite displayed from the sprites given
+var current_body_sprite : int = 0
+#Node of the sprite of the blackhole's head
+@export var blackhole_head_sprite : Sprite2D
+#Node of the sprite of the blackhole's body
+@export var blackhole_body_sprite : Sprite2D
 #Node of the timer
 @onready var timer = $Timer
 #Max time allowed to complete the level (in the first levels)
@@ -27,10 +31,13 @@ var current_sprite : int = 11
 @export var minimum_time = 12
 #The step at which the max time allowed decreases when the maximum amount of planets is reached
 @export var time_step = 1
+#Used to track time
+var current_time = time_allowed
 #Signal send when the timer runs out and the player looses
 signal timeout
 #Maximum amount of planets in a level
 @export var max_planets = 30
+
 
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
@@ -48,10 +55,13 @@ func _ready() -> void:
 @export var camera : Camera2D
 @export var planets_parent : Node2D
 @export var planet_scale : float = 1
+@export var SFX_Unselect_Star : FmodEventEmitter2D
+@export var MainMusic : FmodEventEmitter2D
 
 #region planets generation
 func start_level() -> void :
 	create_constellation()
+	SystemeSon()
 	game_over = false
 
 ## Entrée : Rien |
@@ -60,6 +70,7 @@ func start_level() -> void :
 func create_constellation() -> void :
 	if planets_amount > 2 :
 		timer.start(time_allowed)
+		current_time = time_allowed
 	planets_amount = planets_amount * 3/2
 	if planets_amount > max_planets :
 		planets_amount = max_planets
@@ -163,12 +174,13 @@ func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
-		start_level()
+		timer.stop()
+		Eat_Animation()
 		$SFX_Confirm_Alignment.set_parameter("NumSelectedStars",planets_amount - 4)
 		$SFX_Confirm_Alignment.play()
 	else:
-		$SFX_Unselect_Star.play()
 		print("failed linking ", linking_planets.size(), " planets")
+		SFX_Unselect_Star.play()
 		for planet in linking_planets: planet.cancel_constelation()
 	linking_planets = []
 	
@@ -182,10 +194,10 @@ func _on_timer_timeout() -> void:
 	timer.stop()
 	print("Temps écoulé au niveau : ", current_level)
 	timeout.emit()
-	$CameraPhysic/Camera2D/MUSIC.set_parameter("EndGame",1)
+	MainMusic.set_parameter("EndGame",1)
 
 func check_for_blackhole_sprite_change() -> void :
-	var sprites = [
+	var sprites_head = [
 		"res://assets/images/chara/anim/1.png",
 		"res://assets/images/chara/anim/2.png",
 		"res://assets/images/chara/anim/3.png",
@@ -198,7 +210,54 @@ func check_for_blackhole_sprite_change() -> void :
 		"res://assets/images/chara/anim/10.png",
 		"res://assets/images/chara/anim/11.png",
 	]
-	if int(timer.time_left/time_allowed*10) != current_sprite:
-		current_sprite = int(timer.time_left/time_allowed*10)
-		blackhole_sprite.texture = load(sprites[current_sprite])
+	var sprites_body = [
+		"res://assets/images/chara/anim/bas/bas 1.png",
+		"res://assets/images/chara/anim/bas/bas 2.png",
+		"res://assets/images/chara/anim/bas/bas 3.png",
+		"res://assets/images/chara/anim/bas/bas 4.png",
+	]
+	if int(timer.time_left/time_allowed*10) != current_head_sprite:
+		current_head_sprite = int(timer.time_left/time_allowed*10)
+		blackhole_head_sprite.texture = load(sprites_head[current_head_sprite])
+	if current_time-timer.time_left > 0.5 :
+		current_time = timer.time_left
+		current_body_sprite = (current_body_sprite+1) % 4
+		blackhole_body_sprite.texture = load(sprites_body[current_body_sprite])
+
+func paused(val : bool):
+	timer.paused = val
+#endregion
+
+func SystemeSon() :
+	if current_level<2 :
+		MainMusic.set_parameter("Blackhole_Size",0.1)
+	elif current_level<4 :
+		MainMusic.set_parameter("Blackhole_Size",0.2)
+	elif current_level<6 :
+		MainMusic.set_parameter("Blackhole_Size",0.3)
+	elif current_level<8 :
+		MainMusic.set_parameter("Blackhole_Size",0.4)
+	elif current_level<9 :
+		MainMusic.set_parameter("Blackhole_Size",0.5)
+	elif current_level<10 :
+		MainMusic.set_parameter("Blackhole_Size",0.6)
+	elif current_level<12 :
+		MainMusic.set_parameter("Blackhole_Size",0.7)
+	elif current_level<13 :
+		MainMusic.set_parameter("Blackhole_Size",0.8)
+	elif current_level<15 : 
+		MainMusic.set_parameter("Blackhole_Size",0.9)
+	else :
+		MainMusic.set_parameter("Blackhole_Size",1)
+		$CameraPhysic/Camera2D/MUSIC.setparameter("Blackhole_Size",1)
+
+#region Animation
+
+func Eat_Animation():
+	growth_anim()
+
+func growth_anim():
+	await get_parent().growth_anim(8.0)
+	start_level()
+
 #endregion

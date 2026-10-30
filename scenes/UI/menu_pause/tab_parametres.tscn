@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d0ulsovtj84go"]
 
+[ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="1_c3amq"]
 [ext_resource type="Script" uid="uid://cobeno4y5tm2r" path="res://scenes/UI/menu_pause/slide_menu/slide_menu_parametres.gd" id="2_c3amq"]
 [ext_resource type="PackedScene" uid="uid://dah5m6qsf1fdr" path="res://scenes/UI/menu_pause/slide_menu/slide_menu_parametres.tscn" id="3_4tew8"]
 
@@ -35,11 +36,14 @@ offset_right = -100.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_c3amq")
+theme_override_font_sizes/font_size = 35
 tab_alignment = 1
 current_tab = 0
 
 [node name="Son" type="TabBar" parent="TabContainer" unique_id=1387772198]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_c3amq")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Son" unique_id=1493507541]
@@ -65,6 +69,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Son/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1606379969]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_c3amq")
 theme_override_font_sizes/font_size = 32
 text = "Volume"
 horizontal_alignment = 1
