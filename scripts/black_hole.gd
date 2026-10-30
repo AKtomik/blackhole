@@ -174,7 +174,8 @@ func release_constelator():
 	if (linking_planets.size() >= constelation_required_planet_amount):
 		print("have linked ", linking_planets.size(), " planets")
 		for planet in linking_planets: planet.finish_constelation()
-		start_level()
+		timer.stop()
+		Eat_Animation()
 		$SFX_Confirm_Alignment.set_parameter("NumSelectedStars",planets_amount - 4)
 		$SFX_Confirm_Alignment.play()
 	else:
@@ -250,3 +251,13 @@ func SystemeSon() :
 		MainMusic.set_parameter("Blackhole_Size",0.9)
 	else :
 		MainMusic.set_parameter("Blackhole_Size",1)
+
+
+func Eat_Animation():
+	growth_anim()
+
+func growth_anim():
+	await get_parent().growth_anim(8.0)
+	start_level()
+
+#endregion
