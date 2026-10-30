@@ -43,8 +43,15 @@ point_count = 4
 script = ExtResource("1_vu1g8")
 growth_curve = SubResource("Curve_bt6kb")
 
-[node name="ColorRect" type="Sprite2D" parent="." unique_id=1282688221]
+[node name="ColorRect" type="TextureRect" parent="." unique_id=436186456]
+custom_minimum_size = Vector2(3840, 2160)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_ofi2h")
+stretch_mode = 1
 
 [node name="ParralaxManager" type="Node2D" parent="." unique_id=1460532371]
 script = ExtResource("10_i2e4q")
@@ -57,12 +64,6 @@ OpacityCurve = SubResource("Curve_ofi2h")
 
 [node name="BlackHole" parent="." unique_id=1995767824 node_paths=PackedStringArray("planets_parent") instance=ExtResource("2_jsx7o")]
 unique_name_in_owner = true
-time_allowed = 20
-minimum_time = 12
-time_step = 1
-max_planets = 30
-planets_amount = 2
-min_planet_spacing = 50
 planets_parent = NodePath("../Planets")
 planet_scale = 300.0
 
