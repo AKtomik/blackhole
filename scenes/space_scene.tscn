@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dxw2mr6g26kyb" path="res://assets/images/UI/bulle black hole.png" id="7_mxyie"]
 [ext_resource type="Texture2D" uid="uid://b4elxs7cenqeq" path="res://assets/images/menu_jeu_button_survole.svg" id="8_i2e4q"]
 [ext_resource type="FontFile" uid="uid://c2mb6de2hcgpy" path="res://assets/fonts/OpenDyslexic-Regular.otf" id="9_ntytb"]
-[ext_resource type="Texture2D" uid="uid://e6lw0xhnshui" path="res://assets/images/UI/planetes/sprite_tileable/tile_08.png" id="10_1dowx"]
 [ext_resource type="Script" uid="uid://mahecby4gi5a" path="res://scripts/parralax_manager.gd" id="10_i2e4q"]
 [ext_resource type="PackedScene" uid="uid://cjgexcny30lkg" path="res://scenes/elements/parralax_layer.tscn" id="11_bl5p1"]
 [ext_resource type="Texture2D" uid="uid://cigkr0rsirh3g" path="res://assets/images/BG/Etoiles/A_01.png" id="12_rbo46"]
@@ -76,7 +75,6 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_mxyie")
 
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
-visible = false
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
@@ -108,7 +106,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("10_1dowx")
 stretch_mode = 5
 
 [node name="Button" type="TextureButton" parent="CanvasLayer/Game_over" unique_id=878393311]
