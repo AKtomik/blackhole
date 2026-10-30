@@ -222,6 +222,8 @@ func check_for_blackhole_sprite_change() -> void :
 	
 	print(current_time,"-",timer.time_left)
 
+func paused(val : bool):
+	timer.paused = val
 #endregion
 
 func SystemeSon() :

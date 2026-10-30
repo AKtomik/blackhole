@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0nyy5nelvkkd" path="res://scenes/UI/menu_principal/menu_principal.gd" id="1_80s3h"]
 [ext_resource type="Script" uid="uid://mahecby4gi5a" path="res://scripts/parralax_manager.gd" id="2_a1ow7"]
+[ext_resource type="Texture2D" uid="uid://ck8jqhv8ui5tp" path="res://assets/images/BG/bg v1.png" id="2_qcpdj"]
 [ext_resource type="PackedScene" uid="uid://cjgexcny30lkg" path="res://scenes/elements/parralax_layer.tscn" id="3_qcpdj"]
 [ext_resource type="Texture2D" uid="uid://cigkr0rsirh3g" path="res://assets/images/BG/Etoiles/A_01.png" id="4_7wbet"]
 [ext_resource type="Texture2D" uid="uid://dsa6pso4r5bxj" path="res://assets/images/BG/Etoiles/A_02.png" id="5_yrxmx"]
@@ -34,13 +35,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_80s3h")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1710212863]
-layout_mode = 0
-offset_left = -98.0
-offset_top = -131.0
-offset_right = 1401.0
-offset_bottom = 875.0
-color = Color(0, 0.03325892, 0.07530675, 1)
+[node name="ColorRect" type="Sprite2D" parent="." unique_id=1554242575]
+position = Vector2(532, 324)
+texture = ExtResource("2_qcpdj")
 
 [node name="ParralaxManager" type="Node2D" parent="." unique_id=178727259]
 script = ExtResource("2_a1ow7")

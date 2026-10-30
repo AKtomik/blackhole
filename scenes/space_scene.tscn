@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://r3sj8xcg0s5" path="res://scenes/space_scene.gd" id="1_vu1g8"]
 [ext_resource type="PackedScene" uid="uid://dd65b6ik5uaoi" path="res://scenes/elements/black_hole.tscn" id="2_jsx7o"]
+[ext_resource type="Texture2D" uid="uid://ck8jqhv8ui5tp" path="res://assets/images/BG/bg v1.png" id="2_ofi2h"]
 [ext_resource type="PackedScene" uid="uid://di4chlep1t1or" path="res://scenes/UI/menu_pause/menu_parametres.tscn" id="4_4c1q5"]
 [ext_resource type="Material" uid="uid://rx8wbuy4rxvs" path="res://assets/Shaders/shockwave_bubble_shader.tres" id="6_6scvu"]
 [ext_resource type="Texture2D" uid="uid://dxw2mr6g26kyb" path="res://assets/images/UI/bulle black hole.png" id="7_mxyie"]
@@ -37,12 +38,8 @@ point_count = 4
 script = ExtResource("1_vu1g8")
 growth_curve = SubResource("Curve_bt6kb")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1853053392]
-offset_left = -4083.0
-offset_top = -3137.0
-offset_right = 4568.0
-offset_bottom = 3169.0
-color = Color(0, 0.03325892, 0.07530675, 1)
+[node name="ColorRect" type="Sprite2D" parent="." unique_id=1282688221]
+texture = ExtResource("2_ofi2h")
 
 [node name="ParralaxManager" type="Node2D" parent="." unique_id=1460532371]
 script = ExtResource("10_i2e4q")

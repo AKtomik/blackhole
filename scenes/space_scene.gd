@@ -51,6 +51,7 @@ func quitter_scene() -> void:
 ## Sortie : Rien |
 ## Action : Affiche le menu des paramètres |
 func on_param_button_pressed():
+	%BlackHole.paused(true)
 	self.set_process(false)
 	menu_parametres.set_process(true)
 	menu_parametres.visible = true
@@ -60,6 +61,7 @@ func on_param_button_pressed():
 ## Action : Cache le menu des paramètres |
 func on_exit_parametres() -> void :
 	self.set_process(true)
+	%BlackHole.paused(false)
 	menu_parametres.visible = false
 	menu_parametres.set_process(false)
 

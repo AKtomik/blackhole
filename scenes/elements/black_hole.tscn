@@ -40,15 +40,8 @@ point_count = 4
 script = ExtResource("1_46ff3")
 blackhole_head_sprite = NodePath("Node2D/Sprite2D")
 blackhole_body_sprite = NodePath("Node2D/Corps")
-time_allowed = null
-minimum_time = null
-time_step = null
-max_planets = null
-planets_amount = null
-min_planet_spacing = null
 planets_scenes = Array[PackedScene]([ExtResource("10_j73lu")])
 camera = NodePath("CameraPhysic/Camera2D")
-planet_scale = null
 SFX_Unselect_Star = NodePath("SFX_Unselect_Star")
 
 [node name="SFX_Unselect_Star" type="FmodEventEmitter2D" parent="." unique_id=1549146915]
@@ -59,8 +52,8 @@ event_guid = "{ff97faaa-4a10-4112-a04a-44fff835f78b}"
 scale = Vector2(0.5, 0.5)
 
 [node name="Corps" type="Sprite2D" parent="Node2D" unique_id=1926116181]
-position = Vector2(-7, 58)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-6, 86)
+scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_en8di")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=1402957950]
