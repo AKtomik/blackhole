@@ -16,6 +16,8 @@ var sample_point := 0.0
 @onready var black_hole = $BlackHole
 @onready var Parralax = $ParralaxManager
 @onready var CameraPhysic = $BlackHole/CameraPhysic
+@onready var uwupaillettes = $"BlackHole/Sprite2 Black hole/GPUParticles2D"
+@onready var bulle = $"BlackHole/Sprite2 Black hole/AnimationPlayer"
 var growing := false
 
 # Called when the node enters the scene tree for the first time.
@@ -73,6 +75,7 @@ func on_exit_parametres() -> void :
 
 func _on_black_hole_timeout(current_level : int) -> void:
 	game_over.visible = true
+	bulle.play("bulle_death")
 	label_fin.text = "Vous avez grandi " + str(current_level-1) + " fois."
 
 
