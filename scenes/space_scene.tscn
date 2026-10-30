@@ -22,20 +22,27 @@
 [ext_resource type="Texture2D" uid="uid://5gy56sx64ck2" path="res://assets/images/BG/Etoiles/C_01.png" id="20_2g33w"]
 [ext_resource type="Texture2D" uid="uid://cyc7nowr2b6lo" path="res://assets/images/BG/Etoiles/C_02.png" id="21_muukt"]
 [ext_resource type="Texture2D" uid="uid://bn25vse1t23vj" path="res://assets/images/BG/Etoiles/C_03.png" id="22_6md6r"]
+[ext_resource type="Texture2D" uid="uid://bp1624p2rmy5o" path="res://assets/images/UI/trou noir.png" id="22_ofi2h"]
 [ext_resource type="Texture2D" uid="uid://bph2i222tqyep" path="res://assets/images/BG/Etoiles/C_04.png" id="23_dp81o"]
 [ext_resource type="Texture2D" uid="uid://c0b5sv4yaultb" path="res://assets/images/BG/Etoiles/D_01.png" id="24_p4776"]
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="25_kpxmv"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="26_kkr1u"]
 [ext_resource type="Texture2D" uid="uid://dr6sv1501qoyu" path="res://assets/images/BG/Etoiles/D_04.png" id="27_lrnks"]
 
+[sub_resource type="Curve" id="Curve_bt6kb"]
+_limits = [0.0, 2.5, 0.0, 10.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.95), 0.0, 0.0, 0, 0, Vector2(5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
+growth_curve = SubResource("Curve_bt6kb")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1853053392]
-offset_left = -752.0
-offset_top = -499.0
-offset_right = 747.0
-offset_bottom = 507.0
+offset_left = -4083.0
+offset_top = -3137.0
+offset_right = 4568.0
+offset_bottom = 3169.0
 color = Color(0, 0.03325892, 0.07530675, 1)
 
 [node name="ParralaxManager" type="Node2D" parent="." unique_id=1460532371]
@@ -58,25 +65,24 @@ fmod_parameters/NumSelectedStars/id = -5901918704000455688
 fmod_parameters/NumSelectedStars = 1
 fmod_parameters/NumSelectedStars/variant_type = 2
 
+[node name="Sprite2D3" type="Sprite2D" parent="BlackHole" unique_id=536670305]
+material = ExtResource("6_6scvu")
+texture = ExtResource("22_ofi2h")
+
+[node name="Sprite2D2" type="Sprite2D" parent="BlackHole/Sprite2D3" unique_id=1379783484]
+visible = false
+material = ExtResource("6_6scvu")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("7_mxyie")
+
 [node name="Planets" type="Node2D" parent="." unique_id=1828714037]
+visible = false
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=2035532159]
 bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=444755364]
 layer = 4
-
-[node name="Fond_trou_noir" type="TextureRect" parent="CanvasLayer" unique_id=1383605581]
-material = ExtResource("6_6scvu")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("7_mxyie")
-stretch_mode = 5
 
 [node name="Menu_parametres" parent="CanvasLayer" unique_id=1037719077 instance=ExtResource("4_4c1q5")]
 visible = false

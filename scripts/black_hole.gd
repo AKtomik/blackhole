@@ -9,18 +9,28 @@ var constelation_required_finish : bool = true
 var constelation_required_all : bool = true
 # the default max distance between to planets to link both
 var constelation_maximal_planet_distance : float = 100
-
+# do check the distance a second time (needed if do_hover_emit_with_mouse is true)
+var constelation_second_distance_check : bool = false
+#Number of spawn that were made so far, which is the number of the current level
 var current_level : int = 0
-
+#If the player has lost yet or not
 var game_over = false
-
+#Current sprite displayed from the sprites given
 var current_sprite : int = 11
-
+#Node of the sprite of the blackhole
 @onready var blackhole_sprite = $Sprite2D
-
+#Node of the timer
 @onready var timer = $Timer
-var time_allowed = 20
+#Max time allowed to complete the level (in the first levels)
+@export var time_allowed = 20
+#Minimum time allowed to complete the level (later levels)
+@export var minimum_time = 12
+#The step at which the max time allowed decreases when the maximum amount of planets is reached
+@export var time_step = 1
+#Signal send when the timer runs out and the player looses
 signal timeout
+#Maximum amount of planets in a level
+@export var max_planets = 30
 
 func _process(delta: float) -> void:
 	if (is_linking() && Input.is_action_just_released("left_click")):
@@ -51,10 +61,10 @@ func create_constellation() -> void :
 	if planets_amount > 2 :
 		timer.start(time_allowed)
 	planets_amount = planets_amount * 3/2
-	if planets_amount > 30 :
-		planets_amount = 30
-		if time_allowed > 12 :
-			time_allowed -= 1
+	if planets_amount > max_planets :
+		planets_amount = max_planets
+		if time_allowed > minimum_time :
+			time_allowed -= time_step
 	constelation_required_planet_amount = planets_amount
 	var coordinates = create_coordinates(planets_amount)
 	for i in range(coordinates.size()):
@@ -139,7 +149,7 @@ func join_constelator(planet: Planet):
 	
 	var last_planet = linking_planets[linking_planets.size() - 1]
 	var planet_distance = planet.position.distance_to(last_planet.position)
-	if (planet_distance > last_planet.line_max_range + planet.planet_size): return
+	if (constelation_second_distance_check && planet_distance > last_planet.line_max_range + planet.planet_size): return
 	
 	last_planet.constelation_link(planet)
 	linking_planets.append(planet)

@@ -41,6 +41,11 @@ _data = {
 &"RESET": SubResource("Animation_4pxaw")
 }
 
+[sub_resource type="Curve" id="Curve_bt6kb"]
+_limits = [1.0, 2.5, 0.0, 10.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(3, 1), 0.0, 0.0, 0, 0, Vector2(6.5, 2.5), 0.0, 0.0, 0, 0, Vector2(10, 2.5), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="BlackHole" type="Node2D" unique_id=1995767824 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_46ff3")
 planets_scenes = Array[PackedScene]([ExtResource("10_j73lu")])
@@ -62,6 +67,7 @@ autoplay = &"Blackhole_spawn"
 [node name="CameraPhysic" type="CharacterBody2D" parent="." unique_id=1510526725]
 script = ExtResource("4_fnnx3")
 camera_attraction_toward_center = 40.0
+growth_curve = SubResource("Curve_bt6kb")
 
 [node name="Camera2D" type="Camera2D" parent="CameraPhysic" unique_id=716480409]
 
