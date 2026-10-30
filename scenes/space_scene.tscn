@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bp1624p2rmy5o" path="res://assets/images/UI/trou noir.png" id="22_ofi2h"]
 [ext_resource type="Texture2D" uid="uid://bph2i222tqyep" path="res://assets/images/BG/Etoiles/C_04.png" id="23_dp81o"]
 [ext_resource type="Texture2D" uid="uid://c0b5sv4yaultb" path="res://assets/images/BG/Etoiles/D_01.png" id="24_p4776"]
+[ext_resource type="Texture2D" uid="uid://cm2pwn1cy02sd" path="res://assets/images/UI/Stars/star 2.png" id="24_xyplr"]
 [ext_resource type="Texture2D" uid="uid://bpq7sbt4aogqu" path="res://assets/images/UI/Buttons/bouton.png" id="25_bt6kb"]
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="25_kpxmv"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="26_kkr1u"]
@@ -38,6 +39,46 @@ point_count = 4
 _limits = [0.0, 1.0, 0.0, 10.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(3, 0), 0.0, 0.0, 0, 0, Vector2(6.5, 1), 0.0, 0.0, 0, 0, Vector2(10, 1), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="Curve" id="Curve_e78pb"]
+_data = [Vector2(0.041198492, 1), 0.0, 0.0, 0, 0, Vector2(0.56554306, 0.23076922), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_66d1w"]
+curve = SubResource("Curve_e78pb")
+
+[sub_resource type="Curve" id="Curve_223mp"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0.022471905, -89.230774), 0.0, 0.0, 0, 0, Vector2(0.5805243, -70.769226), 0.0, 0.0, 0, 0, Vector2(1, -196.92307), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3j575"]
+curve = SubResource("Curve_223mp")
+
+[sub_resource type="Curve" id="Curve_2g33w"]
+_data = [Vector2(0.01498127, 0.038461566), 0.0, 0.0, 0, 0, Vector2(0.19101122, 0.13076925), 0.0, 0.0, 0, 0, Vector2(0.7902622, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kamhu"]
+curve = SubResource("Curve_2g33w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lnuoc"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+angle_min = -368.4
+angle_max = -114.59999
+direction = Vector3(1.98, -1.47, 0)
+spread = 180.0
+initial_velocity_min = 467.21
+initial_velocity_max = 1000.0
+angular_velocity_min = 17.699984
+angular_velocity_max = 64.91998
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 7.3799977
+linear_accel_max = 13.929997
+linear_accel_curve = SubResource("CurveTexture_3j575")
+scale_curve = SubResource("CurveTexture_kamhu")
+alpha_curve = SubResource("CurveTexture_66d1w")
 
 [node name="Space" type="Node2D" unique_id=1970641133]
 script = ExtResource("1_vu1g8")
@@ -74,12 +115,19 @@ fmod_parameters/NumSelectedStars/id = -5901918704000455688
 fmod_parameters/NumSelectedStars = 1
 fmod_parameters/NumSelectedStars/variant_type = 2
 
-[node name="Sprite2D3" type="Sprite2D" parent="BlackHole" unique_id=536670305]
-visible = false
+[node name="Sprite2 Black hole" type="Sprite2D" parent="BlackHole" unique_id=536670305]
 material = ExtResource("6_6scvu")
+position = Vector2(0, 51)
 texture = ExtResource("22_ofi2h")
 
-[node name="Sprite2D2" type="Sprite2D" parent="BlackHole/Sprite2D3" unique_id=1379783484]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="BlackHole/Sprite2 Black hole" unique_id=1126501776]
+scale = Vector2(0.46, 0.46)
+emitting = false
+texture = ExtResource("24_xyplr")
+randomness = 0.03
+process_material = SubResource("ParticleProcessMaterial_lnuoc")
+
+[node name="Sprite2D bubble" type="Sprite2D" parent="BlackHole/Sprite2 Black hole" unique_id=1379783484]
 visible = false
 material = ExtResource("6_6scvu")
 scale = Vector2(0.7, 0.7)
