@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b4elxs7cenqeq" path="res://assets/images/menu_jeu_button_survole.svg" id="3_kbxwo"]
 [ext_resource type="PackedScene" uid="uid://cjgexcny30lkg" path="res://scenes/elements/parralax_layer.tscn" id="3_qcpdj"]
 [ext_resource type="Texture2D" uid="uid://cigkr0rsirh3g" path="res://assets/images/BG/Etoiles/A_01.png" id="4_7wbet"]
-[ext_resource type="FontFile" uid="uid://c2mb6de2hcgpy" path="res://assets/fonts/OpenDyslexic-Regular.otf" id="4_at66h"]
 [ext_resource type="Texture2D" uid="uid://8gnaloa0vljm" path="res://assets/images/menu_jeu_tiny_button.svg" id="4_x57wl"]
 [ext_resource type="Texture2D" uid="uid://dgkers5n24soj" path="res://assets/images/menu_jeu_tiny_button_survole.svg" id="5_t70e0"]
 [ext_resource type="Texture2D" uid="uid://dsa6pso4r5bxj" path="res://assets/images/BG/Etoiles/A_02.png" id="5_yrxmx"]
@@ -25,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="17_r7gk5"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="18_rldd6"]
 [ext_resource type="Texture2D" uid="uid://dr6sv1501qoyu" path="res://assets/images/BG/Etoiles/D_04.png" id="19_ibtfj"]
+[ext_resource type="FontFile" uid="uid://bk7bqw4wkhru7" path="res://assets/fonts/Fogtwono5-ypyY.otf" id="22_qcpdj"]
 [ext_resource type="Script" uid="uid://dtekls8lecbh7" path="res://scripts/camera_physic.gd" id="26_qcpdj"]
 
 [node name="Menu_principal_affichage" type="Control" unique_id=843324627]
@@ -97,7 +97,7 @@ modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 128.0
-theme_override_fonts/font = ExtResource("4_at66h")
+theme_override_fonts/font = ExtResource("22_qcpdj")
 theme_override_font_sizes/font_size = 32
 text = "Jouer"
 horizontal_alignment = 1
@@ -142,7 +142,7 @@ offset_left = 22.0
 offset_top = 39.0
 offset_right = 178.0
 offset_bottom = 103.0
-theme_override_fonts/font = ExtResource("4_at66h")
+theme_override_fonts/font = ExtResource("22_qcpdj")
 theme_override_font_sizes/font_size = 19
 text = "Paramètres"
 horizontal_alignment = 1
