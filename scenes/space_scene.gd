@@ -4,6 +4,7 @@ extends Node2D
 @onready var menu_parametres = $CanvasLayer/Menu_parametres
 @onready var planets = $Planets
 @onready var game_over = $CanvasLayer/Game_over
+@onready var label_fin = $CanvasLayer/Game_over/Label
 
 # Signal à envoyer quand on veut quitter la scène
 signal Quitter()
@@ -70,8 +71,9 @@ func on_exit_parametres() -> void :
 #endregion
 
 
-func _on_black_hole_timeout() -> void:
+func _on_black_hole_timeout(current_level : int) -> void:
 	game_over.visible = true
+	label_fin.text = "Vous avez grandi " + str(current_level-1) + " fois."
 
 
 func _on_button_pressed() -> void:
