@@ -189,6 +189,8 @@ is_locked = true
 [node name="FmodBankLoader" type="FmodBankLoader" parent="CameraPhysic" unique_id=409864624]
 bank_paths = ["res://FmodBank/Desktop/Master.strings.bank", "res://FmodBank/Desktop/Master.bank"]
 
+[connection signal="mouse_entered" from="Menu_principal/HBoxContainer/VBoxMainButton/play_button" to="." method="on_button_hover"]
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="Menu_principal/HBoxContainer/VBoxMainButton/param_button" to="." method="on_button_hover"]
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/param_button" to="." method="_on_param_button_pressed"]
 [connection signal="finished" from="MusiqueFond" to="." method="_on_musique_fond_finished"]

@@ -4,6 +4,8 @@ extends Control
 @onready var menu_principal = $Menu_principal
 @onready var menu_parametres = $Menu_parametres
 @onready var musique_fond = $MusiqueFond
+@onready var sound_click = $SFX_Click
+@onready var sound_hover = $SFX_Hover
 
 # Pré charge la scène
 var MainScene = preload("res://scenes/space_scene.tscn").instantiate()
@@ -31,6 +33,7 @@ func _on_param_button_pressed():
 	menu_principal.visible = false
 	menu_parametres.set_process(true)
 	menu_parametres.visible = true
+	sound_click.play()
 
 ## Entrée : Rien |
 ## Sortie : Rien |
@@ -39,6 +42,10 @@ func on_exit_parametres() -> void :
 	menu_principal.visible = true 
 	menu_parametres.visible = false
 	menu_parametres.set_process(false)
+	sound_click.play()
+
+func on_button_hover() -> void :
+	sound_hover.play()
 #endregion
 
 ## Entrée : Rien |

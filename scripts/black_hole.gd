@@ -34,9 +34,11 @@ var current_body_sprite : int = 0
 #Used to track time
 var current_time = time_allowed
 #Signal send when the timer runs out and the player looses
-signal timeout
+signal timeout (level_number : int)
 #Maximum amount of planets in a level
 @export var max_planets = 30
+#Player for death animation
+@onready var animation_death_player = $Node2D/AnimationDeath
 
 
 func _process(delta: float) -> void:
@@ -192,8 +194,9 @@ func release_constelator():
 func _on_timer_timeout() -> void:
 	game_over = true
 	timer.stop()
+	animation_death_player.play("AnimationDeath")
 	print("Temps écoulé au niveau : ", current_level)
-	timeout.emit()
+	timeout.emit(current_level)
 	MainMusic.set_parameter("EndGame",1)
 
 func check_for_blackhole_sprite_change() -> void :
