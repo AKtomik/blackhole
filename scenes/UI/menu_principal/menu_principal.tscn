@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://8t2kr6tmxjsv" path="res://assets/images/BG/Etoiles/D_02.png" id="17_r7gk5"]
 [ext_resource type="Texture2D" uid="uid://rrsgs2skgwh3" path="res://assets/images/BG/Etoiles/D_03.png" id="18_rldd6"]
 [ext_resource type="Texture2D" uid="uid://dr6sv1501qoyu" path="res://assets/images/BG/Etoiles/D_04.png" id="19_ibtfj"]
+[ext_resource type="Script" uid="uid://dtekls8lecbh7" path="res://scripts/camera_physic.gd" id="26_qcpdj"]
 
 [node name="Menu_principal_affichage" type="Control" unique_id=843324627]
 layout_mode = 3
@@ -37,10 +38,10 @@ script = ExtResource("1_80s3h")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1710212863]
 layout_mode = 0
-offset_left = -123.0
-offset_top = -186.0
-offset_right = 1376.0
-offset_bottom = 820.0
+offset_left = -98.0
+offset_top = -131.0
+offset_right = 1401.0
+offset_bottom = 875.0
 color = Color(0, 0.03325892, 0.07530675, 1)
 
 [node name="ParralaxManager" type="Node2D" parent="." unique_id=178727259]
@@ -166,6 +167,13 @@ layout_mode = 1
 [node name="MusiqueFond" type="AudioStreamPlayer" parent="." unique_id=848761638]
 autoplay = true
 bus = &"Music"
+
+[node name="CameraPhysic" type="CharacterBody2D" parent="." unique_id=1376554400]
+script = ExtResource("26_qcpdj")
+camera_attraction_toward_center = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="CameraPhysic" unique_id=1402372298]
+position = Vector2(640, 360)
 
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxMainButton/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu_principal/HBoxContainer/VBoxSideButton/param_button" to="." method="_on_param_button_pressed"]
