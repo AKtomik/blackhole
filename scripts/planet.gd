@@ -15,8 +15,13 @@ extends Area2D
 signal planet_clicked(Planet)
 signal planet_hovered(Planet)
 
+var do_hover_emit_with_mouse = false
+var do_hover_emit_with_ray = true
+
+
 var initial_scale_visual
 var initial_scale_shape
+
 
 func _ready() -> void:
 	selected_sprite_node.visible = false
@@ -37,10 +42,10 @@ func _process(_delta: float) -> void:
 		line_to(get_global_mouse_position())
 		if (link_ray_node.enabled && link_ray_node.is_colliding()):
 			var collider = link_ray_node.get_collider()
-			print("colliding with ", collider)
+			print("ray colliding with ", collider)
 			if (collider is Planet):
 				print("collider is a planet!")
-				collider.planet_hovered(collider)
+				collider.planet_hovered.emit(collider)
 
 # GRAPHISM
 
